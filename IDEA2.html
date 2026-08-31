@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Being Known Without Disclosure - How Platform Inferences About the Private Self Shape Self-Verification and Self-Threat</title>
 <style>
 :root{
@@ -53,17 +52,15 @@ p{margin:0;color:var(--ink)}
 .gap-strip strong{color:var(--navy)}
 
 /* model */
-.model-box{border:1px solid var(--line);border-radius:7px;padding:9px 10px 7px;height:295px;background:#fff}
+.model-box{border:1px solid var(--line);border-radius:7px;padding:8px 10px 6px;height:270px;background:#fff}
 .model-box svg{display:block;width:100%;height:100%}
-.sequence{margin-top:8px;border:1px solid #cae1d0;background:var(--green-soft);border-radius:6px;padding:8px 11px;font-size:12px;line-height:1.33;color:#355546}
-.benchmark{margin-top:8px;border:1px solid var(--line);border-radius:7px;padding:8px 12px 9px;background:#fbfcfd}
-.bench-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
-.bench-head strong{font-size:12.2px;color:var(--navy)}
+.sequence{margin-top:7px;border:1px solid #cae1d0;background:var(--green-soft);border-radius:6px;padding:7px 10px;font-size:11.7px;line-height:1.28;color:#355546}
+.benchmark{margin-top:7px;border:1px solid var(--line);border-radius:7px;padding:7px 11px 7px;background:#fbfcfd}
+.bench-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.bench-head strong{font-size:12.4px;color:var(--navy)}
 .bench-head span{font-size:10.3px;color:var(--muted)}
-.bench-flow{display:grid;grid-template-columns:1fr 40px 1.35fr 40px 1.1fr;align-items:center;gap:4px}
-.bnode{border:1.5px solid #7796ad;border-radius:5px;padding:7px 10px;text-align:center;font-size:12.4px;font-weight:680;color:#365267;background:#fff;line-height:1.22}
-.barrow{text-align:center;font-size:22px;color:#557a94}
-.bench-note{font-size:10.8px;line-height:1.25;color:#70808c;margin-top:6px}
+.benchmark svg{display:block;width:100%;height:138px}
+.bench-note{font-size:10.2px;line-height:1.2;color:#70808c;margin-top:0}
 
 /* tables */
 .table-wrap{border:1px solid #d3dde5;border-radius:5px;overflow:hidden}
@@ -74,12 +71,17 @@ tbody tr:nth-child(even) td{background:#f7fafc}
 tbody tr:last-child td{border-bottom:none}
 td.role{font-weight:800;color:var(--navy)}
 td.construct{font-weight:720;color:#26475f}
-.table-note{font-size:11.2px;color:#73838f;margin:0 0 8px}
-.hyp td{font-size:13.8px;line-height:1.28;padding:7.5px 9px}
-.hyp td:nth-child(1){font-weight:800;color:var(--navy)}
+.table-note{font-size:10.7px;color:#73838f;margin:0 0 6px}
+.hyp td{font-size:11.85px;line-height:1.22;padding:5.4px 7px}
+.hyp th{font-size:11.7px;padding:6px 7px}.hyp td:nth-child(1){font-weight:800;color:var(--navy)}
 .hyp td:nth-child(2){text-align:center;font-weight:750;color:#386480}
 .overview td{font-size:14.1px;line-height:1.28;padding:9px 10px}
 .overview td:first-child{font-weight:800;color:var(--navy)}
+.construct-table th{font-size:11.5px;padding:6px 6px;line-height:1.12}
+.construct-table td{font-size:11.75px;line-height:1.23;padding:6px 6px}
+.construct-table td:nth-child(3),.construct-table td:nth-child(4){color:#344653}
+.construct-table td:nth-child(5){font-size:11.2px;color:#5f7180}
+.construct-table td:nth-child(6){font-size:11.2px;color:#425766}
 
 /* study pages */
 .study .slide-title{margin-bottom:10px;font-size:27px}
@@ -88,9 +90,9 @@ td.construct{font-weight:720;color:#26475f}
 .study-box.purpose{background:var(--blue-soft);border-color:#c5dce9}
 .study-box.design{background:var(--green-soft);border-color:#c9e0cf}
 .study-label{font-size:11px;font-weight:800;color:var(--navy);margin-bottom:5px}
-.study-box p{font-size:13.5px;line-height:1.36}
-.design-ref{margin-top:7px;background:rgba(255,255,255,.65);border:1px solid #d7e3db;border-radius:5px;padding:6px 8px;font-size:11px;line-height:1.3;color:#60716a}
-.manip{margin-top:7px;border-left:3px solid var(--blue);background:#f7fbfe;padding:6px 8px;font-size:11.5px;line-height:1.3;color:#475c6b}
+.study-box p{font-size:12.9px;line-height:1.34}
+.design-ref{margin-top:7px;background:rgba(255,255,255,.65);border:1px solid #d7e3db;border-radius:5px;padding:6px 8px;font-size:10.7px;line-height:1.27;color:#60716a}
+.manip{margin-top:7px;border-left:3px solid var(--blue);background:#f7fbfe;padding:6px 8px;font-size:11.2px;line-height:1.28;color:#475c6b}
 .manip strong{color:var(--navy)}
 .steps{display:grid;gap:8px;margin-top:10px}
 .steps.cols4{grid-template-columns:repeat(4,1fr)}
@@ -120,387 +122,256 @@ td.construct{font-weight:720;color:#26475f}
   .sheet{box-shadow:0 3px 11px rgba(40,67,88,.12)}
 }
 </style>
-<style>
-/* IDEA2 v2 - typography and layout aligned with IDEA1 */
-html{min-width:1280px;background:var(--bg)}
-body{
-  width:1280px;min-width:1280px;margin:0 auto;background:var(--bg);
-  font-family:"Source Han Sans SC","Noto Sans SC","Noto Sans","PingFang SC","Microsoft YaHei",Arial,sans-serif;
-  font-size:15px;line-height:1.62;font-stretch:normal;
-}
-.deck{padding:1px 0 34px}
-.slide-page{
-  width:1280px;height:auto;min-height:720px;margin:0 auto 24px;padding:24px;
-  background:var(--bg);position:relative;overflow:visible;page-break-after:always;break-after:page;
-}
-.sheet{
-  position:relative;left:auto;top:auto;width:1232px;height:auto;min-height:672px;
-  margin:0;background:var(--paper);border-radius:16px;box-shadow:0 4px 18px rgba(23,54,93,.12);
-  padding:42px 48px 54px;overflow:visible;
-}
-.slide-title{font-size:28px;line-height:1.18;font-weight:700;color:var(--navy);margin:0 0 14px}
-.title-rule{height:3px;margin-bottom:20px}
-.footer{left:48px;right:48px;bottom:18px;font-size:11px;color:#9aa5b1}
-
-/* Cover - same hierarchy as IDEA1 */
-.cover .sheet{min-height:672px;height:672px;display:flex;align-items:center;justify-content:center;text-align:center;padding:54px 90px}
-.cover-wrap{width:100%;max-width:1040px;transform:none}
-.idea-kicker{font-size:15px;line-height:1;font-weight:900;letter-spacing:1.6px;color:var(--blue);margin-bottom:18px}
-.cover-main{font-size:44px;line-height:1.18;font-weight:700;color:var(--navy);letter-spacing:0;margin:0 auto 20px;max-width:1010px}
-.cover-sub{font-size:23px;line-height:1.34;font-weight:650;color:#526a80;max-width:930px;margin:0 auto}
-
-/* Background / RQ - align with IDEA1 reference-style page */
-.background .slide-title{
-  position:relative;padding-left:24px;color:#0d6599;margin:0 0 28px;
-  font-family:"Noto Serif","Times New Roman",serif;font-size:31px;line-height:1.22;font-weight:700;
-}
-.background .slide-title:before{left:0;top:-2px;width:7px;height:46px;background:#0c6fa5}
-.bg-copy{font-family:"Noto Serif","Times New Roman",serif;font-size:18px;line-height:1.58;color:#142033}
-.bg-copy p{margin:0 0 18px;text-align:justify;color:#142033}
-.callout{padding:13px 16px;margin-top:8px;border-radius:8px;border-left:5px solid #0c6fa5;font-family:inherit;font-size:16.2px;line-height:1.48}
-.callout strong{font-family:inherit;color:#0d6599}
-.rqbox{padding:13px 16px;margin-top:12px;border-radius:8px;font-size:16.2px;line-height:1.48}
-
-/* Literature - restore presentation-readable body sizes */
-.lit-grid{gap:16px 18px}
-.lit-card{border-radius:12px;padding:15px 17px;min-height:0}
-.kicker{font-size:12px;letter-spacing:.5px;margin-bottom:6px}
-.lit-card h3{font-size:17px;line-height:1.25;margin-bottom:7px;font-weight:700}
-.lit-card .known{font-size:14.2px;line-height:1.47}
-.unresolved{margin-top:9px;padding:8px 10px;font-size:13.2px;line-height:1.42;border-left-width:4px;border-radius:0 7px 7px 0}
-.cite{font-size:12.2px;margin-top:7px}
-.gap-strip{margin-top:13px;padding:10px 12px;font-size:13.4px;line-height:1.43;border-radius:8px}
-
-/* Model annotations */
-.model-box{height:310px;border-radius:12px;padding:11px 12px 9px}
-.sequence{margin-top:10px;padding:10px 12px;font-size:13.4px;line-height:1.43;border-radius:8px}
-.benchmark{margin-top:10px;padding:10px 13px 11px;border-radius:10px}
-.bench-head strong{font-size:13.2px}.bench-head span{font-size:11.5px}
-.bnode{font-size:13.1px;line-height:1.25;padding:8px 10px;border-radius:7px}
-.bench-note{font-size:12px;line-height:1.35;margin-top:7px}
-
-/* Tables - match IDEA1 presentation scale */
-table{font-size:14.2px;line-height:1.38}
-th{font-size:14px;line-height:1.2;padding:11px 12px}
-td{font-size:14.2px;line-height:1.38;padding:10px 12px}
-.table-wrap{border-radius:8px}
-.table-note{font-size:12.6px;line-height:1.4;margin:0 0 10px}
-/* Construct definitions */
-section:nth-of-type(5) table{font-size:13.15px!important;line-height:1.34!important;table-layout:fixed}
-section:nth-of-type(5) th,section:nth-of-type(5) td{font-size:13.15px!important;padding:8px 9px!important}
-section:nth-of-type(5) col:nth-child(1){width:6%!important}
-section:nth-of-type(5) col:nth-child(2){width:18%!important}
-section:nth-of-type(5) col:nth-child(3){width:38%!important}
-section:nth-of-type(5) col:nth-child(4){width:15%!important}
-section:nth-of-type(5) col:nth-child(5){width:23%!important}
-/* Hypotheses */
-.hyp td{font-size:13.35px!important;line-height:1.36!important;padding:10px 11px!important}
-.hyp th{font-size:13.35px!important;padding:10px 11px!important}
-/* Study overview */
-.overview td{font-size:13.45px!important;line-height:1.39!important;padding:10px 11px!important}
-.overview th{font-size:13.45px!important;padding:10px 11px!important}
-
-/* Study pages */
-.study .slide-title{font-size:28px;line-height:1.18;margin-bottom:12px}
-.study-box{border-radius:10px;padding:12px 14px;margin-bottom:11px}
-.study-label{font-size:12.5px;margin-bottom:6px}
-.study-box p{font-size:14.2px;line-height:1.46}
-.design-ref{font-size:11.8px;line-height:1.38;padding:7px 9px;margin-top:8px;border-radius:7px}
-.manip{font-size:12.5px;line-height:1.42;padding:8px 10px;margin-top:8px;border-left-width:4px}
-.steps{gap:10px;margin-top:12px}
-.step{border-radius:9px;padding:11px 11px 10px;min-height:138px}
-.num{width:24px;height:24px;font-size:12px}
-.step strong{font-size:13.2px;line-height:1.24}
-.step p{font-size:12.8px;line-height:1.4}
-
-/* Contributions */
-.contrib-grid{gap:16px 18px;margin-top:8px}
-.contrib{border-radius:11px;padding:16px 16px 14px;min-height:0}
-.contrib .label{font-size:12px;margin-bottom:8px}
-.contrib h3{font-size:17px;line-height:1.28;margin-bottom:9px}
-.contrib p{font-size:14.2px;line-height:1.48}
-
-/* No interactive chrome in this export */
-#lang-toggle,#detail-overlay,#speaker-overlay,button{display:none!important}
-
-@media print{
-  html,body{background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .deck{padding:0}
-  .slide-page{margin:0;padding:24px;width:1280px;height:auto;min-height:720px}
-  .sheet{box-shadow:none}
-}
-</style>
-<style id="translation-safe-screen-layout">
-/* Translation-safe browser layout.
-   Browser translation / bilingual translation can substantially increase text height.
-   On screen, each sheet grows with its translated content. */
-@media screen {
-  html, body { height:auto !important; overflow-y:auto !important; }
-  .slide-page:not(.cover) {
-    height:auto !important;
-    min-height:720px !important;
-    overflow:visible !important;
-    padding:24px !important;
-  }
-  .slide-page:not(.cover) > .sheet {
-    height:auto !important;
-    min-height:672px !important;
-    overflow:visible !important;
-    position:relative !important;
-    left:auto !important;
-    top:auto !important;
-    display:flex !important;
-    flex-direction:column !important;
-    padding-bottom:24px !important;
-  }
-  .slide-page:not(.cover) > .sheet > .footer {
-    position:static !important;
-    left:auto !important;
-    right:auto !important;
-    bottom:auto !important;
-    width:100% !important;
-    margin-top:auto !important;
-    padding-top:18px !important;
-    flex:0 0 auto !important;
-  }
-  .slide-page:not(.cover) table,
-  .slide-page:not(.cover) thead,
-  .slide-page:not(.cover) tbody,
-  .slide-page:not(.cover) tr,
-  .slide-page:not(.cover) td,
-  .slide-page:not(.cover) th,
-  .slide-page:not(.cover) p,
-  .slide-page:not(.cover) .lit-card,
-  .slide-page:not(.cover) .study-box,
-  .slide-page:not(.cover) .step,
-  .slide-page:not(.cover) .contrib,
-  .slide-page:not(.cover) .gap-strip,
-  .slide-page:not(.cover) .callout,
-  .slide-page:not(.cover) .rqbox {
-    max-height:none !important;
-    overflow:visible !important;
-  }
-  .slide-page:not(.cover) td,
-  .slide-page:not(.cover) th,
-  .slide-page:not(.cover) p,
-  .slide-page:not(.cover) h1,
-  .slide-page:not(.cover) h2,
-  .slide-page:not(.cover) h3 {
-    overflow-wrap:anywhere;
-    word-break:normal;
-  }
-  /* Cover remains fixed so the title keeps the same centered presentation. */
-  .cover .sheet { overflow:visible !important; }
-}
-</style>
 </head>
 <body>
 <div class="deck">
+
 <section class="slide-page cover">
-<div class="sheet">
-<div class="cover-wrap"><div class="idea-kicker">IDEA2 -</div>
-<div class="cover-main">Being Known Without Disclosure</div>
-<div class="cover-sub">How Platform Inferences About the Private Self Shape Self-Verification and Self-Threat</div>
-</div>
-<div class="footer"><span></span><span>1 / 12</span></div>
-</div>
+  <div class="sheet">
+    <div class="cover-wrap">
+      <div class="cover-main">Being Known Without Disclosure</div>
+      <div class="cover-sub">How Platform Inferences About the Private Self Shape Self-Verification and Self-Threat</div>
+    </div>
+    <div class="footer"><span></span><span>1 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page background">
-<div class="sheet">
-<h1 class="slide-title">Background and Research Question</h1>
-<div class="bg-copy">
-<p>Digital platforms increasingly form judgments about consumers from first-party behavioral traces rather than relying solely on information consumers explicitly disclose. Some of these judgments concern private information about the self that consumers already know but have never directly shared with the platform.</p>
-<p>Direct disclosure and independent platform inference differ in more than how the platform obtains the information. When consumers disclose private self-information, the platform uses a self-view they have already expressed. When the platform independently reaches the same conclusion from behavior, the same information also becomes a judgment formed by the platform itself.</p>
-<p>This distinction is especially consequential for evaluatively sensitive private information. An accurate inference can confirm an existing self-view while also revealing that the private attribute can be inferred from the consumer's behavior. It remains unclear how these two meanings of the same accurate inference shape subsequent responses to additional self-relevant information.</p>
-</div>
-<div class="callout"><strong>Practical Scenario - Amazon Fashion</strong><br/>For a consumer who already knows her usual size, the same accurate size recommendation can be based either on information she previously provided or on a judgment the platform independently derives from shopping behavior. The recommendation is identical; what differs is whether the platform independently inferred the private self-information.</div>
-<div class="rqbox"><strong>Research question:</strong> When the private self-information, its accuracy, and the resulting recommendation are held constant, how does privacy inference shape consumers' reactions to the platform's judgment and their willingness to acquire additional self-information?</div>
-<div class="footer"><span>Background and Research Question</span><span>2 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Background and Research Question</h1>
+    <div class="bg-copy">
+      <p>Recommendation systems increasingly do more than predict what consumers may buy. From first-party behavioral traces, platforms can independently infer private, self-relevant information that consumers have not explicitly disclosed. Once surfaced in a recommendation, such an inference does more than personalize the offer: it reveals that a private aspect of the consumer is legible to the platform.</p>
+      <p>This matters most when the inferred attribute is evaluatively sensitive. Body size, hair thinning, financial constraint, or visible aging can carry stigma and shame because they bear on how the self may be judged by others. When a platform derives such an attribute from behavior, the consumer may experience not just data use but the external visibility of a privately managed aspect of the self.</p>
+      <p>At the same time, if the inference accurately captures the consumer's self-view, it can also feel validating. The same privacy inference may therefore communicate both <em>"the platform understands me"</em> and <em>"the platform can see something private about me."</em> Existing research does not explain how these two meanings coexist or how they shape willingness to acquire additional self-information.</p>
+    </div>
+    <div class="callout"><strong>Practical Scenario - Amazon Fashion</strong><br>Consider a consumer who typically wears 2XL. A 2XL recommendation can place her in an <strong>"oversize"</strong> or larger-size category. Because larger bodies can be stigmatized in fashion markets, the platform's independent inference of this size-related category may evoke shame, embarrassment, or a desire to conceal the attribute. The exact same 2XL recommendation could instead rely on size information she previously entered. Product, size, recommendation, and accuracy are held constant; what differs is whether this private judgment was disclosed by the consumer or independently inferred from her shopping behavior. <span class="small">Scaraboto &amp; Fischer (2013); Venkatraman, Ozanne, &amp; Coslor (2024).</span></div>
+    <div class="rqbox"><strong>Research question:</strong> How does a platform's independent inference of undisclosed, evaluatively sensitive private self-information shape consumers' reactions to the platform's judgment and their willingness to acquire additional self-information?</div>
+    <div class="footer"><span>Background and Research Question</span><span>2 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Literature Foundations and Core Theoretical Gap</h1><div class="title-rule"></div>
-<div class="lit-grid">
-<div class="lit-card"><div class="kicker">1 - Firm-Inferred Information</div><h3>Consumer-Provided versus Firm-Inferred Information</h3><p class="known">Firms increasingly infer personal information from consumer data rather than relying only on direct disclosure. Inferred information can also be perceived as less appropriate.</p><div class="unresolved"><strong>Unresolved:</strong> Prior work focuses mainly on privacy and appropriateness. It remains unclear whether an accurate inference of already-known private self-information takes on a different psychological meaning when the platform reaches the conclusion independently.</div><div class="cite">Kim, Barasz, &amp; John (2019); Kaliyamurthy &amp; Schau (2025); Liu, Haubl, &amp; Castelo (2026)</div></div>
-<div class="lit-card"><div class="kicker">2 - Self-Verification</div><h3>External Confirmation of Existing Self-Views</h3><p class="known">Self-verification research shows that feedback consistent with existing self-views can make people feel accurately known and understood.</p><div class="unresolved"><strong>Unresolved:</strong> Existing research mainly examines interpersonal feedback or consumer choices. It remains unclear whether a recommender provides additional external confirmation by independently reaching a conclusion the consumer already holds.</div><div class="cite">Wiesenfeld et al. (2007); Stuppy, Mead, &amp; Van Osselaer (2020)</div></div>
-<div class="lit-card"><div class="kicker">3 - Self-Threat</div><h3>Evaluatively Sensitive Self-Information</h3><p class="known">Self-relevant attributes can threaten favorable self-views when they carry negative evaluative implications, even when their descriptive content is accurate.</p><div class="unresolved"><strong>Unresolved:</strong> Existing work usually begins with negative feedback, stigma, or explicit threat. It remains unclear whether accurate external recognition of a private evaluatively sensitive attribute can itself become threatening.</div><div class="cite">Campbell &amp; Sedikides (1999); Venkatraman, Ozanne, &amp; Coslor (2024)</div></div>
-<div class="lit-card"><div class="kicker">4 - Information Avoidance</div><h3>Avoiding Useful Self-Relevant Information</h3><p class="known">Consumers sometimes avoid available and useful self-relevant information when learning more carries psychological costs.</p><div class="unresolved"><strong>Unresolved:</strong> Existing work mainly explains avoidance by the expected content or consequences of information. It remains unclear whether a prior accurate platform inference changes willingness to learn what else the platform knows.</div><div class="cite">Woolley &amp; Risen (2021); Fong &amp; Hunter (2022)</div></div>
-</div>
-<div class="gap-strip"><strong>Core theoretical gap:</strong> Research has not explained how an accurate, independently generated inference about already-known private self-information can simultaneously function as external confirmation and a self-threatening cue, or how these responses shape subsequent acquisition of self-information.</div>
-<div class="footer"><span>Literature Foundations and Core Theoretical Gap</span><span>3 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Literature Foundations and Core Theoretical Gap</h1><div class="title-rule"></div>
+    <div class="lit-grid">
+      <div class="lit-card"><div class="kicker">1 - Firm-Inferred Information</div><h3>From Behavioral Traces to Private-Self Judgments</h3><p class="known">Platforms can infer personal and sensitive information from consumer behavior rather than direct disclosure, and inferred information can be experienced as less appropriate or more privacy-invasive.</p><div class="unresolved"><strong>Unresolved:</strong> This literature primarily treats inference as a data-practice or privacy problem. It says less about what it means psychologically when a platform independently infers an undisclosed, self-relevant attribute and surfaces it as a judgment about the consumer.</div><div class="cite">Kim, Barasz, &amp; John (2019); Kaliyamurthy &amp; Schau (2025); Liu, Haubl, &amp; Castelo (2026)</div></div>
+      <div class="lit-card"><div class="kicker">2 - Self-Verification</div><h3>Accurate External Confirmation of Existing Self-Views</h3><p class="known">Self-verification research shows that feedback consistent with existing self-views can make people feel accurately known and understood.</p><div class="unresolved"><strong>Unresolved:</strong> Existing research mainly examines interpersonal feedback or self-verifying consumption. It remains unclear whether a platform-generated inference can function as self-verifying feedback when it accurately captures a private self-view without direct disclosure.</div><div class="cite">Leary (2007); Wiesenfeld et al. (2007); Stuppy, Mead, &amp; Van Osselaer (2020)</div></div>
+      <div class="lit-card"><div class="kicker">3 - Shame, Stigma, and Self-Threat</div><h3>When a Private Attribute Becomes Externally Visible</h3><p class="known">Shame is a self-conscious emotion tied to self-evaluation and real or imagined judgments by others. Consumer research shows that stigmatized body and identity attributes can produce shame, exclusion, concealment, and identity-management responses.</p><div class="unresolved"><strong>Unresolved:</strong> This literature usually begins with stigma, direct exposure, or explicit negative evaluation. It remains unclear whether a platform's independent inference, without overt condemnation, can itself make a private attribute feel externally visible and threatening.</div><div class="cite">Leary (2007); Scaraboto &amp; Fischer (2013); Venkatraman, Ozanne, &amp; Coslor (2024)</div></div>
+      <div class="lit-card"><div class="kicker">4 - Information Avoidance</div><h3>Withdrawing from Additional Self-Relevant Information</h3><p class="known">Consumers sometimes avoid information that is available and useful when learning more carries psychological costs or threatens valued self-views.</p><div class="unresolved"><strong>Unresolved:</strong> Existing work mainly explains avoidance by the expected content of the information itself. It remains unclear whether one platform inference of an undisclosed sensitive attribute changes willingness to learn what else the platform has inferred.</div><div class="cite">Woolley &amp; Risen (2021); Fong &amp; Hunter (2022)</div></div>
+    </div>
+    <div class="gap-strip"><strong>Core theoretical gap:</strong> Prior research separately explains why inferred data can feel inappropriate, why congruent feedback verifies self-views, why stigmatized attributes can evoke shame and self-threat, and why people avoid psychologically costly information. What is missing is a theory of <em>platform inference as external self-feedback</em>: when a platform independently derives evaluatively sensitive private self-information from behavior, the inference can both signal accurate understanding and make a potentially shame-linked aspect of the self externally legible. These two meanings may activate self-verification and self-threat in parallel and push subsequent self-information acquisition in opposite directions.</div>
+    <div class="footer"><span>Literature Foundations and Core Theoretical Gap</span><span>3 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Theoretical Model</h1><div class="title-rule"></div>
-<div class="model-box">
-<svg aria-label="Theoretical model" viewbox="0 0 1120 330">
-<defs><marker id="arr" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#173b61"></path></marker></defs>
-<rect fill="#f7fbfe" height="92" rx="7" stroke="#173b61" stroke-width="2" width="220" x="28" y="115"></rect>
-<text fill="#173b61" font-size="17" font-weight="700" text-anchor="middle" x="138" y="148">X - Privacy Inference</text>
-<text fill="#566c7d" font-size="12.5" text-anchor="middle" x="138" y="174">Absent vs. Present</text>
-<text fill="#7b8a96" font-size="11" text-anchor="middle" x="138" y="194">Disclosure-based vs. inference-based</text>
-<rect fill="#edf7f0" height="76" rx="7" stroke="#347a5b" stroke-width="2" width="235" x="365" y="58"></rect>
-<text fill="#347a5b" font-size="18" font-weight="700" text-anchor="middle" x="482" y="89">M1 - Self-Verification</text>
-<rect fill="#fbf5e9" height="76" rx="7" stroke="#a06b28" stroke-width="2" width="235" x="365" y="196"></rect>
-<text fill="#8a5c20" font-size="18" font-weight="700" text-anchor="middle" x="482" y="227">M2 - Self-Threat</text>
-<rect fill="#fbf0f2" height="92" rx="7" stroke="#995c65" stroke-width="2" width="235" x="848" y="115"></rect>
-<text fill="#884a55" font-size="17" font-weight="700" text-anchor="middle" x="965" y="151">Y - Information Avoidance</text>
-<text fill="#6f6470" font-size="12.5" text-anchor="middle" x="965" y="177">of additional self-information</text>
-<line marker-end="url(#arr)" stroke="#173b61" stroke-width="2.2" x1="248" x2="365" y1="147" y2="98"></line>
-<line marker-end="url(#arr)" stroke="#173b61" stroke-width="2.2" x1="248" x2="365" y1="178" y2="234"></line>
-<line marker-end="url(#arr)" stroke="#173b61" stroke-width="2.2" x1="600" x2="848" y1="97" y2="145"></line>
-<line marker-end="url(#arr)" stroke="#173b61" stroke-width="2.2" x1="600" x2="848" y1="234" y2="178"></line>
-<text fill="#173b61" font-size="12" font-weight="700" text-anchor="middle" x="307" y="104">H1a +</text>
-<text fill="#173b61" font-size="12" font-weight="700" text-anchor="middle" x="307" y="238">H1b +</text>
-<text fill="#173b61" font-size="12" font-weight="700" text-anchor="middle" x="727" y="109">H2a -</text>
-<text fill="#173b61" font-size="12" font-weight="700" text-anchor="middle" x="727" y="231">H2b +</text>
-<rect fill="#edf7f0" height="52" rx="6" stroke="#347a5b" stroke-width="1.6" width="250" x="630" y="8"></rect>
-<text fill="#347a5b" font-size="14" font-weight="700" text-anchor="middle" x="755" y="30">W1 - Self-Expansion Preference</text>
-<text fill="#60776b" font-size="10.8" text-anchor="middle" x="755" y="47">Measured continuously</text>
-<line stroke="#347a5b" stroke-dasharray="5 4" stroke-width="1.7" x1="755" x2="755" y1="60" y2="118"></line>
-<text fill="#347a5b" font-size="11.5" font-weight="700" x="768" y="90">H3 -</text>
-<rect fill="#fbf5e9" height="44" rx="6" stroke="#a06b28" stroke-width="1.6" width="210" x="650" y="279"></rect>
-<text fill="#8a5c20" font-size="14" font-weight="700" text-anchor="middle" x="755" y="305">W2 - Self-Distancing</text>
-<line stroke="#a06b28" stroke-dasharray="5 4" stroke-width="1.7" x1="755" x2="755" y1="279" y2="215"></line>
-<text fill="#8a5c20" font-size="11.5" font-weight="700" x="768" y="260">H4 -</text>
-</svg>
-</div>
-<div class="sequence"><strong>Theoretical sequence:</strong> An accurate privacy inference functions as externally generated self-feedback. Independent confirmation strengthens self-verification, while the fact that an evaluatively sensitive private attribute can be inferred from behavior heightens self-threat. The two responses have opposing implications for subsequent self-information avoidance.</div>
-<div class="benchmark">
-<div class="bench-head"><strong>Benchmark Account in Prior Firm-Inference Research</strong><span>Kim, Barasz, &amp; John (2019, JCR)</span></div>
-<div class="bench-flow"><div class="bnode">Firm-Inferred Information</div><div class="barrow">→</div><div class="bnode">Privacy Concern / Perceived Inappropriateness</div><div class="barrow">→</div><div class="bnode">Negative Consumer Response</div></div>
-<div class="bench-note">The benchmark emphasizes a primarily defensive response. The proposed model adds two simultaneous self-related pathways with opposing downstream effects.</div>
-</div>
-<div class="footer"><span>Theoretical Model</span><span>4 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Theoretical Model</h1><div class="title-rule"></div>
+    <div class="model-box">
+      <svg viewBox="0 0 1120 330" aria-label="Theoretical model">
+        <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#173b61"/></marker></defs>
+        <rect x="28" y="115" width="220" height="92" rx="7" fill="#f7fbfe" stroke="#173b61" stroke-width="2"/>
+        <text x="138" y="148" text-anchor="middle" font-size="17" font-weight="700" fill="#173b61">X - Privacy Inference</text>
+        <text x="138" y="174" text-anchor="middle" font-size="12.5" fill="#566c7d">Absent vs. Present</text>
+        <text x="138" y="194" text-anchor="middle" font-size="11" fill="#7b8a96">Disclosure-based vs. inference-based</text>
+        <rect x="365" y="58" width="235" height="76" rx="7" fill="#edf7f0" stroke="#347a5b" stroke-width="2"/>
+        <text x="482" y="89" text-anchor="middle" font-size="18" font-weight="700" fill="#347a5b">M1 - Self-Verification</text>
+        <rect x="365" y="196" width="235" height="76" rx="7" fill="#fbf5e9" stroke="#a06b28" stroke-width="2"/>
+        <text x="482" y="227" text-anchor="middle" font-size="18" font-weight="700" fill="#8a5c20">M2 - Self-Threat</text>
+        <rect x="848" y="115" width="235" height="92" rx="7" fill="#fbf0f2" stroke="#995c65" stroke-width="2"/>
+        <text x="965" y="151" text-anchor="middle" font-size="17" font-weight="700" fill="#884a55">Y - Information Avoidance</text>
+        <text x="965" y="177" text-anchor="middle" font-size="12.5" fill="#6f6470">of additional self-information</text>
+        <line x1="248" y1="147" x2="365" y2="98" stroke="#173b61" stroke-width="2.2" marker-end="url(#arr)"/>
+        <line x1="248" y1="178" x2="365" y2="234" stroke="#173b61" stroke-width="2.2" marker-end="url(#arr)"/>
+        <line x1="600" y1="97" x2="848" y2="145" stroke="#173b61" stroke-width="2.2" marker-end="url(#arr)"/>
+        <line x1="600" y1="234" x2="848" y2="178" stroke="#173b61" stroke-width="2.2" marker-end="url(#arr)"/>
+        <text x="307" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#173b61">H1a +</text>
+        <text x="307" y="238" text-anchor="middle" font-size="12" font-weight="700" fill="#173b61">H1b +</text>
+        <text x="727" y="109" text-anchor="middle" font-size="12" font-weight="700" fill="#173b61">H2a -</text>
+        <text x="727" y="231" text-anchor="middle" font-size="12" font-weight="700" fill="#173b61">H2b +</text>
+        <rect x="630" y="8" width="250" height="52" rx="6" fill="#edf7f0" stroke="#347a5b" stroke-width="1.6"/>
+        <text x="755" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#347a5b">W1 - Self-Expansion Preference</text>
+        <text x="755" y="47" text-anchor="middle" font-size="10.8" fill="#60776b">Measured continuously</text>
+        <line x1="755" y1="60" x2="755" y2="118" stroke="#347a5b" stroke-width="1.7" stroke-dasharray="5 4"/>
+        <text x="768" y="90" font-size="11.5" font-weight="700" fill="#347a5b">H3 -</text>
+        <rect x="650" y="279" width="210" height="44" rx="6" fill="#fbf5e9" stroke="#a06b28" stroke-width="1.6"/>
+        <text x="755" y="305" text-anchor="middle" font-size="14" font-weight="700" fill="#8a5c20">W2 - Self-Distancing</text>
+        <line x1="755" y1="279" x2="755" y2="215" stroke="#a06b28" stroke-width="1.7" stroke-dasharray="5 4"/>
+        <text x="768" y="260" font-size="11.5" font-weight="700" fill="#8a5c20">H4 -</text>
+      </svg>
+    </div>
+    <div class="sequence"><strong>Theoretical sequence:</strong> Privacy inference turns undisclosed private self-information into an externally generated judgment derived from behavior. When the judgment accurately captures the consumer's self-view, it can strengthen self-verification. When the inferred attribute is evaluatively sensitive and potentially linked to stigma or shame, its external legibility can heighten self-threat. These parallel responses have opposing implications for subsequent self-information avoidance.</div>
+    <div class="benchmark">
+      <div class="bench-head"><strong>Top-Journal Structural Benchmark · Parallel Moderated Mediation</strong><span>Clegg et al. (2024, JCR, Study 5)</span></div>
+      <svg viewBox="0 0 1120 165" role="img" aria-label="Parallel moderated mediation benchmark from Clegg et al. 2024">
+        <defs><marker id="benchArrV8" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#557a94"/></marker></defs>
+        <rect x="34" y="58" width="210" height="60" rx="7" fill="#f7fbfe" stroke="#173b61" stroke-width="1.7"/>
+        <text x="139" y="82" text-anchor="middle" font-size="14.5" font-weight="700" fill="#173b61">Algorithm Type</text>
+        <text x="139" y="103" text-anchor="middle" font-size="10.7" fill="#637789">High vs. Low Adaptivity</text>
+
+        <rect x="352" y="22" width="224" height="50" rx="7" fill="#edf7f0" stroke="#347a5b" stroke-width="1.7"/>
+        <text x="464" y="52" text-anchor="middle" font-size="14.2" font-weight="700" fill="#347a5b">Perceived Creativity</text>
+        <rect x="352" y="105" width="224" height="50" rx="7" fill="#fbf5e9" stroke="#a06b28" stroke-width="1.7"/>
+        <text x="464" y="135" text-anchor="middle" font-size="14.2" font-weight="700" fill="#8a5c20">Perceived Predictability</text>
+
+        <rect x="876" y="58" width="210" height="60" rx="7" fill="#fbf0f2" stroke="#995c65" stroke-width="1.7"/>
+        <text x="981" y="82" text-anchor="middle" font-size="14.5" font-weight="700" fill="#884a55">Product Preference</text>
+        <text x="981" y="103" text-anchor="middle" font-size="10.7" fill="#74636a">Usage / Purchase Intention</text>
+
+        <line x1="244" y1="77" x2="352" y2="49" stroke="#557a94" stroke-width="2" marker-end="url(#benchArrV8)"/>
+        <line x1="244" y1="99" x2="352" y2="130" stroke="#557a94" stroke-width="2" marker-end="url(#benchArrV8)"/>
+        <line x1="576" y1="47" x2="876" y2="76" stroke="#557a94" stroke-width="2" marker-end="url(#benchArrV8)"/>
+        <line x1="576" y1="130" x2="876" y2="99" stroke="#557a94" stroke-width="2" marker-end="url(#benchArrV8)"/>
+
+        <rect x="645" y="3" width="200" height="42" rx="7" fill="#f4f7fb" stroke="#6d86a0" stroke-width="1.5"/>
+        <text x="745" y="21" text-anchor="middle" font-size="12.7" font-weight="700" fill="#4d6680">Product Outcome Range</text>
+        <text x="745" y="36" text-anchor="middle" font-size="9.8" fill="#6e7f8e">moderates both b-paths</text>
+        <line x1="705" y1="45" x2="705" y2="59" stroke="#6d86a0" stroke-width="1.45" stroke-dasharray="5 4"/>
+        <line x1="705" y1="59" x2="724" y2="61" stroke="#6d86a0" stroke-width="1.45" stroke-dasharray="5 4"/>
+        <line x1="785" y1="45" x2="785" y2="113" stroke="#6d86a0" stroke-width="1.45" stroke-dasharray="5 4"/>
+        <line x1="785" y1="113" x2="724" y2="115" stroke="#6d86a0" stroke-width="1.45" stroke-dasharray="5 4"/>
+        <circle cx="724" cy="61" r="3" fill="#6d86a0"/>
+        <circle cx="724" cy="115" r="3" fill="#6d86a0"/>
+      </svg>
+      <div class="bench-note">Structural benchmark only: Clegg et al. test two parallel mediators and a moderator of the mediator-to-outcome paths. The construct meanings differ from the present research.</div>
+    </div>
+    <div class="footer"><span>Theoretical Model</span><span>4 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Construct Definitions and Sources</h1><div class="title-rule"></div>
-<div class="table-wrap"><table>
-<colgroup><col style="width:6%"/><col style="width:16%"/><col style="width:39%"/><col style="width:17%"/><col style="width:22%"/></colgroup>
-<thead><tr><th>Role</th><th>Construct</th><th>Definition</th><th>Definition / Conceptual Source</th><th>Measurement / Manipulation</th></tr></thead>
-<tbody>
-<tr><td class="role">IV</td><td class="construct">Privacy Inference</td><td>A platform independently derives target private information from behavioral data without receiving it directly from the consumer. Here, the target information is already known by the consumer, accurate, and evaluatively sensitive.</td><td>Kim, Barasz, &amp; John (2019); Kaliyamurthy &amp; Schau (2025)</td><td>Hold the private information, accuracy, and recommendation constant. Compare prior consumer disclosure with independent platform inference from first-party behavioral records.</td></tr>
-<tr><td class="role">M1</td><td class="construct">Self-Verification</td><td>The experience of confirming existing self-views through feedback consistent with those views. In this setting, it captures feeling accurately recognized and understood by the platform.</td><td>Stuppy, Mead, &amp; Van Osselaer (2020); Bosson &amp; Swann (2023)</td><td>Context-adapted three-item experienced self-verification measure used by Amarnani (2022).</td></tr>
-<tr><td class="role">M2</td><td class="construct">Self-Threat</td><td>A psychological state in which a valued or favorable view of the self is challenged. Here, it captures threat created when an evaluatively sensitive private attribute is inferable from behavior.</td><td>Mo, Ma, Hamilton, &amp; Zhao (2025)</td><td>Contextualized state self-threat measure adapted to the platform-inference setting.</td></tr>
-<tr><td class="role">DV</td><td class="construct">Information Avoidance</td><td>Deliberately choosing not to acquire available information even when it may have instrumental value. The target behavior is declining additional self-relevant information after the initial personalization episode.</td><td>Woolley &amp; Risen (2021); Fong &amp; Hunter (2022)</td><td>Equal-cost behavioral choice between viewing additional personalized self-information and explicitly declining it.</td></tr>
-<tr><td class="role">W1</td><td class="construct">Self-Expansion Preference</td><td>An individual preference for opportunities that broaden the self through new experiences, knowledge, perspectives, and capabilities.</td><td>Hughes, Slotter, &amp; Lewandowski (2020)</td><td>Self-Expansion Preference Scale, analyzed continuously without median splitting.</td></tr>
-<tr><td class="role">W2</td><td class="construct">Self-Distancing</td><td>Reflecting on a personal experience from a psychologically removed, observer-like perspective.</td><td>Kross, Ong, &amp; Ayduk (2023)</td><td>Randomize self-immersed versus self-distanced reflection using first-person versus observer-like perspectives.</td></tr>
-</tbody>
-</table></div>
-<div class="footer"><span>Construct Definitions and Sources</span><span>5 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Construct Definitions and Sources</h1><div class="title-rule"></div>
+    <div class="table-wrap"><table class="construct-table">
+      <colgroup><col style="width:5%"><col style="width:13%"><col style="width:25%"><col style="width:27%"><col style="width:13%"><col style="width:17%"></colgroup>
+      <thead><tr><th>Role</th><th>Construct</th><th>Theoretical Definition</th><th>Meaning in This Research</th><th>Definition / Conceptual Source</th><th>Measurement / Manipulation</th></tr></thead>
+      <tbody>
+        <tr><td class="role">IV</td><td class="construct">Privacy Inference</td><td>Privacy inference refers to a platform deriving private information about a consumer from observed behavioral data rather than obtaining that information through direct disclosure.</td><td>In this research, it captures whether the platform forms the same evaluatively sensitive private-self judgment by independently inferring it from first-party behavioral traces rather than using a prior consumer statement.</td><td>Kim, Barasz, &amp; John (2019); Kaliyamurthy &amp; Schau (2025)</td><td>Study-specific manipulation adapted from the consumer-stated versus firm-inferred distinction in Kim et al. (2019), while holding information content, accuracy, and the recommendation constant.</td></tr>
+        <tr><td class="role">M1</td><td class="construct">Self-Verification</td><td>Self-verification refers to the experience of receiving feedback that confirms existing self-views and supports a sense of being accurately known.</td><td>Here, it captures the extent to which consumers feel that the platform's independently generated judgment accurately recognizes and understands them.</td><td>Stuppy, Mead, &amp; Van Osselaer (2020); Bosson &amp; Swann (2023)</td><td>Context-adapted three-item experienced self-verification measure employed by Amarnani (2022), with the referent changed to the platform.</td></tr>
+        <tr><td class="role">M2</td><td class="construct">Self-Threat</td><td>Self-threat refers to a psychological state in which a valued or favorable view of the self is challenged or placed at risk.</td><td>Here, it captures the threat created when an evaluatively sensitive private self-aspect, especially one linked to stigma or shame, becomes externally inferable and socially evaluable through the platform's judgment.</td><td>Mo, Ma, Hamilton, &amp; Zhao (2025); Venkatraman, Ozanne, &amp; Coslor (2024)</td><td>Contextualized state self-threat items adapted to the platform-inference setting, with pretests separating self-threat from shame, embarrassment, and privacy concern.</td></tr>
+        <tr><td class="role">DV</td><td class="construct">Information Avoidance</td><td>Information avoidance refers to deliberately choosing not to acquire available information even when the information can provide instrumental value.</td><td>Here, it captures whether consumers decline additional personalized self-information after the platform has already surfaced a private self-judgment.</td><td>Woolley &amp; Risen (2021); Fong &amp; Hunter (2022)</td><td>Equal-cost behavioral choice between viewing an additional personalized profile and explicitly declining it, with neither option preselected.</td></tr>
+        <tr><td class="role">W1</td><td class="construct">Self-Expansion Preference</td><td>Self-expansion preference refers to a stable preference for opportunities that broaden the self through new knowledge, experiences, perspectives, or capabilities.</td><td>Here, it captures how strongly consumers value additional platform feedback as an opportunity to learn more about themselves.</td><td>Hughes, Slotter, &amp; Lewandowski (2020)</td><td>Self-Expansion Preference Scale from Hughes et al. (2020), analyzed continuously without median splitting.</td></tr>
+        <tr><td class="role">W2</td><td class="construct">Self-Distancing</td><td>Self-distancing refers to reflecting on a personal experience from a psychologically removed, observer-like perspective rather than an immersed first-person perspective.</td><td>Here, it captures how consumers process the platform's private-self judgment after self-threat has formed, with greater psychological distance reducing immersion in the threatening self-evaluative meaning of that judgment.</td><td>Kross, Ong, &amp; Ayduk (2023)</td><td><strong>Experimental manipulation:</strong> randomized self-immersed versus self-distanced reflection adapted from Ayduk &amp; Kross (2008) and Kross &amp; Ayduk (2008). Participants either revisit the experience through their own eyes or mentally step back and view themselves from an observer-like perspective.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="footer"><span>Construct Definitions and Sources</span><span>5 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Hypotheses and Theoretical Rationale</h1><div class="title-rule"></div>
-<p class="table-note">X = Privacy Inference, M1 = Self-Verification, M2 = Self-Threat, DV = Information Avoidance, W1 = Self-Expansion Preference, W2 = Self-Distancing.</p>
-<div class="table-wrap"><table class="hyp">
-<colgroup><col style="width:7%"/><col style="width:16%"/><col style="width:31%"/><col style="width:46%"/></colgroup>
-<thead><tr><th>Hypothesis</th><th>Path</th><th>Formal Prediction</th><th>Theoretical Rationale</th></tr></thead>
-<tbody>
-<tr><td>H1a</td><td>X → M1</td><td>Privacy inference increases self-verification.</td><td>When the platform independently reaches the same conclusion the consumer already holds, the matching judgment provides external confirmation and strengthens the experience of being accurately recognized.</td></tr>
-<tr><td>H1b</td><td>X → M2</td><td>For evaluatively sensitive private self-information, privacy inference increases self-threat.</td><td>The inference reveals that an external system can infer the private attribute from behavior, heightening the salience of unfavorable self-implications and threatening a favorable self-view.</td></tr>
-<tr><td>H2a</td><td>X → M1 → DV</td><td>Privacy inference has a negative indirect effect on information avoidance through self-verification.</td><td>Feeling accurately understood reduces resistance to further self-relevant feedback and increases openness to additional self-information.</td></tr>
-<tr><td>H2b</td><td>X → M2 → DV</td><td>Privacy inference has a positive indirect effect on information avoidance through self-threat.</td><td>Self-threat motivates protection of a favorable self-view; declining further information from the same self-domain can serve that protective goal.</td></tr>
-<tr><td>H3</td><td>M1 x W1 → DV</td><td>The negative effect of self-verification on information avoidance is stronger among consumers higher in self-expansion preference.</td><td>Consumers higher in self-expansion preference place greater value on extending self-knowledge and therefore translate accurate recognition more strongly into continued exploration.</td></tr>
-<tr><td>H4</td><td>M2 x W2 → DV</td><td>The positive effect of self-threat on information avoidance is attenuated under self-distanced relative to self-immersed reflection.</td><td>An observer-like perspective increases psychological distance from the threatening experience, weakening the translation of self-threat into defensive avoidance.</td></tr>
-</tbody>
-</table></div>
-<div class="footer"><span>Hypotheses</span><span>6 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Hypotheses and Theoretical Rationale</h1><div class="title-rule"></div>
+    <p class="table-note">X = Privacy Inference, M1 = Self-Verification, M2 = Self-Threat, DV = Information Avoidance, W1 = Self-Expansion Preference, W2 = Self-Distancing.</p>
+    <div class="table-wrap"><table class="hyp">
+      <colgroup><col style="width:7%"><col style="width:16%"><col style="width:31%"><col style="width:46%"></colgroup>
+      <thead><tr><th>Hypothesis</th><th>Path</th><th>Formal Prediction</th><th>Theoretical Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>H1a</td><td>X &rarr; M1</td><td>With accurate private self-information, privacy inference increases self-verification relative to direct disclosure.</td><td>In the disclosure condition, the platform uses a private self-description that the consumer has already supplied. In the inference condition, the platform reaches the same accurate judgment from behavioral traces without receiving that private attribute directly. Because the agreement is independently generated rather than merely repeated, it provides stronger external confirmation that the platform has correctly understood the consumer.</td></tr>
+        <tr><td>H1b</td><td>X &rarr; M2</td><td>For evaluatively sensitive private self-information, privacy inference increases self-threat relative to direct disclosure.</td><td>Independent inference demonstrates that a private, evaluatively sensitive attribute can be recovered from the consumer's behavior. When that attribute is linked to stigma, shame, or unfavorable social evaluation, the inference makes the private self more externally visible and socially evaluable. The same personalized recommendation therefore carries stronger threatening implications for the broader self.</td></tr>
+        <tr><td>H2a</td><td>X &rarr; M1 &rarr; DV</td><td>Relative to direct disclosure, privacy inference has a negative indirect effect on information avoidance through self-verification.</td><td>Self-verification changes how consumers interpret further information from the platform. When the first platform judgment confirms the consumer's self-view, the platform becomes a more credible and less aversive source of self-relevant feedback. Additional information therefore becomes more useful for self-learning, reducing information avoidance.</td></tr>
+        <tr><td>H2b</td><td>X &rarr; M2 &rarr; DV</td><td>Relative to direct disclosure, privacy inference has a positive indirect effect on information avoidance through self-threat.</td><td>Self-threat gives additional information the opposite meaning. Once the platform has made a sensitive private self-aspect externally visible, further profile information keeps attention on the same threatening self-domain. Declining that information limits continued engagement with the threat and therefore increases information avoidance.</td></tr>
+        <tr><td>H3</td><td>M1 x W1 &rarr; DV</td><td>Self-expansion preference strengthens the negative relationship between self-verification and information avoidance.</td><td>Self-expansion preference captures how strongly consumers value opportunities to extend self-knowledge. When this preference is stronger, self-verifying feedback has greater value as a starting point for further self-learning. Self-verification is therefore more likely to translate into continued information acquisition, strengthening its negative relationship with avoidance.</td></tr>
+        <tr><td>H4</td><td>M2 x W2 &rarr; DV</td><td>Self-distancing weakens the positive relationship between self-threat and information avoidance.</td><td>Self-distancing changes how consumers process an already formed threat. An observer-like perspective reduces immersion in the self-evaluative meaning of the platform's inference while leaving the original judgment unchanged. Self-distancing therefore weakens the extent to which self-threat translates into defensive information avoidance.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="footer"><span>Hypotheses</span><span>6 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Overall Experimental Design</h1><div class="title-rule"></div>
-<div class="table-wrap"><table class="overview">
-<colgroup><col style="width:10%"/><col style="width:28%"/><col style="width:48%"/><col style="width:14%"/></colgroup>
-<thead><tr><th>Study</th><th>Study Role</th><th>Core Design</th><th>Hypotheses</th></tr></thead>
-<tbody>
-<tr><td>Study 1</td><td><strong>Establish the competing-process account.</strong><br/>Test whether one accurate inference elicits both responses and opposing information choices.</td><td><strong>Body size / 2XL.</strong> Keep the product, size, and accuracy constant; manipulate whether 2XL comes from prior disclosure or independent behavioral inference. Measure both responses, then offer a useful Personal Fit Profile and record view versus decline.</td><td>H1a, H1b, H2a, H2b</td></tr>
-<tr><td>Study 2</td><td><strong>Test cross-domain generalizability.</strong><br/>Replicate the competing-process pattern beyond body-related information.</td><td><strong>Private financial information.</strong> Consumers already know their discretionary budget is limited. Keep value-focused recommendations constant while manipulating disclosure versus independent inference, then offer a Personal Spending Profile.</td><td>H1a, H1b, H2a, H2b</td></tr>
-<tr><td>Study 3</td><td><strong>Test the verification-side boundary.</strong><br/>Identify who converts feeling accurately understood into continued self-information acquisition.</td><td><strong>Private skincare concerns.</strong> Measure self-expansion preference continuously, then manipulate disclosure versus independent inference of already-known fine-line and firmness concerns. Measure both responses and the profile-viewing choice.</td><td>H3</td></tr>
-<tr><td>Study 4</td><td><strong>Provide experimental process evidence for the threat pathway.</strong></td><td><strong>Hair-thinning concern.</strong> Manipulate disclosure versus independent inference, measure self-verification and self-threat, then randomize self-immersed versus self-distanced reflection before the profile-viewing choice.</td><td>H4</td></tr>
-</tbody>
-</table></div>
-<div class="footer"><span>Overall Experimental Design</span><span>7 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Overall Experimental Design</h1><div class="title-rule"></div>
+    <div class="table-wrap"><table class="overview">
+      <colgroup><col style="width:10%"><col style="width:28%"><col style="width:48%"><col style="width:14%"></colgroup>
+      <thead><tr><th>Study</th><th>Study Role</th><th>Core Design</th><th>Hypotheses</th></tr></thead>
+      <tbody>
+        <tr><td>Study 1</td><td><strong>Establish the core competing-process effect.</strong><br>Show that the same inferred private judgment can activate both self-verification and self-threat and produce opposing information-choice tendencies.</td><td><strong>2-condition between-subjects fashion experiment.</strong> Hold the product, 2XL recommendation, and accuracy constant; randomize whether 2XL comes from prior disclosure or independent first-party behavioral inference. Measure M1 and M2, then offer a useful Personal Fit Profile and record view versus decline.</td><td>H1a, H1b, H2a, H2b</td></tr>
+        <tr><td>Study 2</td><td><strong>Test cross-domain generalizability.</strong><br>Establish that the competing-process pattern is not specific to body-size information.</td><td><strong>2-condition between-subjects financial experiment.</strong> Establish a limited discretionary budget, hold value-focused recommendations constant, randomize disclosure versus independent behavioral inference, measure M1/M2, and then offer a Personal Spending Profile.</td><td>H1a, H1b, H2a, H2b</td></tr>
+        <tr><td>Study 3</td><td><strong>Test the verification-side boundary condition.</strong><br>Identify when self-verification is more likely to become continued self-information acquisition.</td><td><strong>Measured W1 + 2-condition skincare experiment.</strong> Measure self-expansion preference first, insert a neutral transition, then randomize disclosure versus independent inference of the same skincare concern. Measure M1/M2 and the Personal Skincare Profile choice.</td><td>H3</td></tr>
+        <tr><td>Study 4</td><td><strong>Test the threat-side process boundary condition.</strong><br>Determine whether changing how an already formed threat is processed weakens defensive avoidance.</td><td><strong>Sequential 2 x 2 experiment with manipulated W2.</strong> Randomize disclosure versus inference in a hair-thinning scenario, measure M1/M2, then randomly assign self-immersed versus self-distanced reflection before the Personal Hair and Grooming Profile choice.</td><td>H4</td></tr>
+      </tbody>
+    </table></div>
+    <div class="footer"><span>Overall Experimental Design</span><span>7 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page study">
-<div class="sheet">
-<h1 class="slide-title">Study 1 - Establishing the Competing-Process Account</h1><div class="title-rule"></div>
-<div class="study-box purpose"><div class="study-label">Purpose</div><p>Establish the proposed competing-process pattern by testing whether an accurate privacy inference increases both self-verification and self-threat and whether the two responses predict opposing choices about learning more from the platform.</p></div>
-<div class="study-box design"><div class="study-label">Design</div><p>Participants imagine shopping for a top and already know that 2XL is their usual current size. Everyone receives the same product and the same 2XL recommendation. The experiment changes only why the platform knows the size.</p><div class="design-ref"><strong>Design basis:</strong> Kim, Barasz, &amp; John (2019, JCR) for consumer-stated versus firm-inferred information; Summers, Smith, &amp; Reczek (2016, JCR) for behavior-based inference; Woolley &amp; Risen (2021, JCR) and Fong &amp; Hunter (2022, Marketing Science) for behavioral information avoidance.</div><div class="manip"><strong>Absent:</strong> "This recommendation uses the usual top size you previously entered and saved in your account."    <strong>Present:</strong> "You have not entered a usual top size in your account. Based on your purchase history, return history, retained items, and fit feedback on this platform, our system estimates that your usual top size is 2XL."</div></div>
-<div class="steps cols5">
-<div class="step"><div class="step-head"><span class="num">1</span><strong>Establish known accuracy</strong></div><p>The scenario establishes that 2XL is already known and accurate.</p></div>
-<div class="step"><div class="step-head"><span class="num">2</span><strong>Same recommendation</strong></div><p>Both conditions see the same product and "We recommend size 2XL."</p></div>
-<div class="step"><div class="step-head"><span class="num">3</span><strong>Randomize inference</strong></div><p>Prior disclosure versus independent inference from first-party records.</p></div>
-<div class="step"><div class="step-head"><span class="num">4</span><strong>Measure M1 and M2</strong></div><p>Measure self-verification and self-threat with order counterbalanced.</p></div>
-<div class="step"><div class="step-head"><span class="num">5</span><strong>Behavioral choice</strong></div><p>Offer a useful Personal Fit Profile and record view versus decline.</p></div>
-</div>
-<div class="footer"><span>Study 1 - Establishing the Competing-Process Account</span><span>8 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Study 1 · Establishing the Core Effect</h1><div class="title-rule"></div>
+    <div class="study-box purpose"><div class="study-label">Purpose</div><p>Test H1a-H2b in one controlled setting by establishing whether privacy inference activates both self-verification and self-threat and whether the two responses are associated with opposing choices about acquiring additional self-information.</p></div>
+    <div class="study-box design"><div class="study-label">Design</div><p>A two-condition between-subjects online experiment using a fashion-sizing scenario. Participants imagine shopping for the same top on a personalized shopping platform. The scenario establishes 2XL as their current usual top size, and every participant sees the identical product page and the identical recommendation, <strong>"Recommended size: 2XL."</strong> The only randomized difference is how the platform obtained the size judgment.</p><div class="manip"><strong>Privacy Inference Absent:</strong> "You previously entered and saved 2XL as your usual top size. We used this information to personalize your recommendation."<br><strong>Privacy Inference Present:</strong> "You have not provided your usual top size. Based on your purchase history, return history, retained items, and fit feedback on this platform, our system estimates that your usual top size is 2XL. We used this estimate to personalize your recommendation."</div><div class="design-ref"><strong>Theory and measurement:</strong> Kim, Barasz, &amp; John (2019) ground the consumer-stated versus firm-inferred comparison; M1 uses the context-adapted experienced self-verification measure; M2 uses contextualized state self-threat items; the behavioral outcome follows equal-cost information-avoidance logic from Woolley &amp; Risen (2021) and Fong &amp; Hunter (2022).</div></div>
+    <div class="steps cols5">
+      <div class="step"><div class="step-head"><span class="num">1</span><strong>Enter the fashion task</strong></div><p>Establish 2XL as the participant's current usual top size and show the same product.</p></div>
+      <div class="step"><div class="step-head"><span class="num">2</span><strong>View the same recommendation</strong></div><p>All participants see "Recommended size: 2XL."</p></div>
+      <div class="step"><div class="step-head"><span class="num">3</span><strong>Randomize information source</strong></div><p>Prior disclosure versus independent inference from first-party behavioral records.</p></div>
+      <div class="step"><div class="step-head"><span class="num">4</span><strong>Measure both responses</strong></div><p>Measure self-verification and self-threat; counterbalance their block order.</p></div>
+      <div class="step"><div class="step-head"><span class="num">5</span><strong>Record information choice</strong></div><p>Offer a useful Personal Fit Profile and record view versus explicit decline.</p></div>
+    </div>
+    <div class="footer"><span>Study 1 · Establishing the Core Effect</span><span>8 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page study">
-<div class="sheet">
-<h1 class="slide-title">Study 2 - Testing Cross-Domain Generalizability</h1><div class="title-rule"></div>
-<div class="study-box purpose"><div class="study-label">Purpose</div><p>Test whether the competing-process pattern extends beyond body-related self-information to a substantively different form of private financial information.</p></div>
-<div class="study-box design"><div class="study-label">Design</div><p>Participants already know that their discretionary budget has recently become limited. Both conditions receive the same value-focused recommendations; only the source of the platform's judgment differs.</p><div class="manip"><strong>Absent:</strong> "You previously indicated in your personalization settings that you are currently shopping with a limited discretionary budget."    <strong>Present:</strong> "You have not provided information about your current budget. Based on your recent purchase frequency, price comparisons, discount use, postponed purchases, and product substitutions on this platform, our system estimates that your current discretionary budget is limited."</div></div>
-<div class="steps cols5">
-<div class="step"><div class="step-head"><span class="num">1</span><strong>Known financial state</strong></div><p>Consumers already know their current discretionary budget is limited.</p></div>
-<div class="step"><div class="step-head"><span class="num">2</span><strong>Same recommendation</strong></div><p>Both conditions see the same value-focused products.</p></div>
-<div class="step"><div class="step-head"><span class="num">3</span><strong>Randomize inference</strong></div><p>Prior budget disclosure versus independent inference from shopping behavior.</p></div>
-<div class="step"><div class="step-head"><span class="num">4</span><strong>Measure M1 and M2</strong></div><p>Measure both psychological responses to test conceptual replication.</p></div>
-<div class="step"><div class="step-head"><span class="num">5</span><strong>Behavioral choice</strong></div><p>Offer a Personal Spending Profile and record whether it is viewed.</p></div>
-</div>
-<div class="footer"><span>Study 2 - Testing Cross-Domain Generalizability</span><span>9 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Study 2 · Testing Cross-Domain Generalizability</h1><div class="title-rule"></div>
+    <div class="study-box purpose"><div class="study-label">Purpose</div><p>Replicate H1a-H2b in a substantively different private domain to show that the competing self-verification and self-threat processes do not depend on clothing size or body-related information.</p></div>
+    <div class="study-box design"><div class="study-label">Design</div><p>A two-condition between-subjects online experiment using private financial information. The scenario establishes that the participant's discretionary budget has recently become limited. Everyone sees the same value-focused recommendation set. The experiment changes only whether the platform uses a previously disclosed budget condition or independently infers the same condition from first-party shopping behavior.</p><div class="manip"><strong>Privacy Inference Absent:</strong> "You previously indicated in your personalization settings that you are currently shopping with a limited discretionary budget. We used this information to personalize these recommendations."<br><strong>Privacy Inference Present:</strong> "You have not provided information about your current budget. Based on your recent purchase frequency, price comparisons, discount use, postponed purchases, and product substitutions on this platform, our system estimates that your current discretionary budget is limited. We used this estimate to personalize these recommendations."</div><div class="design-ref"><strong>Design logic:</strong> Product set, recommendation rationale, budget conclusion, and perceived accuracy are held constant across conditions. The same M1, M2, and behavioral information-choice measures used in Study 1 are retained to provide a direct conceptual replication across domains.</div></div>
+    <div class="steps cols5">
+      <div class="step"><div class="step-head"><span class="num">1</span><strong>Enter the financial scenario</strong></div><p>Establish a limited discretionary budget as the private target attribute.</p></div>
+      <div class="step"><div class="step-head"><span class="num">2</span><strong>View the same products</strong></div><p>Both conditions receive identical value-focused recommendations.</p></div>
+      <div class="step"><div class="step-head"><span class="num">3</span><strong>Randomize information source</strong></div><p>Prior budget disclosure versus independent inference from shopping behavior.</p></div>
+      <div class="step"><div class="step-head"><span class="num">4</span><strong>Measure M1 and M2</strong></div><p>Measure self-verification and self-threat using the same ordering procedure as Study 1.</p></div>
+      <div class="step"><div class="step-head"><span class="num">5</span><strong>Record information choice</strong></div><p>Offer a Personal Spending Profile and record view versus explicit decline.</p></div>
+    </div>
+    <div class="footer"><span>Study 2 · Testing Cross-Domain Generalizability</span><span>9 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page study">
-<div class="sheet">
-<h1 class="slide-title">Study 3 - Testing the Verification-Side Boundary Condition</h1><div class="title-rule"></div>
-<div class="study-box purpose"><div class="study-label">Purpose</div><p>Test whether self-expansion preference determines how strongly the experience of being accurately understood translates into continued acquisition of self-information.</p></div>
-<div class="study-box design"><div class="study-label">Design</div><p>Self-expansion preference is measured continuously in a broader individual-difference battery, followed by a neutral transition. Participants then enter a skincare scenario and already know that fine lines and loss of firmness are current personal concerns. Both conditions receive the same skincare recommendation.</p><div class="manip"><strong>Absent:</strong> "You previously indicated in your personal preferences that fine lines and loss of firmness are current concerns."    <strong>Present:</strong> "You have not provided information about your current skincare concerns. Based on your recent skincare browsing, product comparisons, purchases, and saved items on this platform, our system identifies fine lines and loss of firmness as current concerns."</div></div>
-<div class="steps cols5">
-<div class="step"><div class="step-head"><span class="num">1</span><strong>Measure W1</strong></div><p>Measure self-expansion preference continuously in a broader battery.</p></div>
-<div class="step"><div class="step-head"><span class="num">2</span><strong>Neutral transition</strong></div><p>Complete a brief consumer task unrelated to the hypotheses.</p></div>
-<div class="step"><div class="step-head"><span class="num">3</span><strong>Same recommendation</strong></div><p>Both conditions receive the same firming and fine-line skincare recommendation.</p></div>
-<div class="step"><div class="step-head"><span class="num">4</span><strong>Manipulate inference</strong></div><p>Prior disclosure versus independent behavioral inference of the same concern.</p></div>
-<div class="step"><div class="step-head"><span class="num">5</span><strong>Test H3</strong></div><p>Measure M1/M2, offer a Personal Skincare Profile, and estimate the continuous interaction.</p></div>
-</div>
-<div class="footer"><span>Study 3 - Testing the Verification-Side Boundary Condition</span><span>10 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Study 3 · Testing the Verification-Side Boundary Condition</h1><div class="title-rule"></div>
+    <div class="study-box purpose"><div class="study-label">Purpose</div><p>Test H3 by examining whether self-expansion preference determines how strongly self-verifying platform feedback translates into continued acquisition of self-information.</p></div>
+    <div class="study-box design"><div class="study-label">Design</div><p>Self-expansion preference is measured continuously at the beginning of the session within a broader individual-difference battery, followed by a neutral transition task. Participants then enter a skincare scenario in which fine lines and loss of firmness are current personal concerns. Everyone sees the same skincare recommendation; the source of the private judgment is randomized.</p><div class="manip"><strong>Privacy Inference Absent:</strong> "You previously indicated in your personal preferences that fine lines and loss of firmness are current concerns. We used this information to personalize these recommendations."<br><strong>Privacy Inference Present:</strong> "You have not provided information about your current skincare concerns. Based on your recent skincare browsing, product comparisons, purchases, and saved items on this platform, our system identifies fine lines and loss of firmness as current concerns. We used this judgment to personalize these recommendations."</div><div class="design-ref"><strong>W1 measurement:</strong> Self-Expansion Preference Scale from Hughes et al. (2020). W1 remains continuous and is not dichotomized. M1/M2 and the behavioral profile choice follow the same measurement logic as the earlier studies.</div></div>
+    <div class="steps cols5">
+      <div class="step"><div class="step-head"><span class="num">1</span><strong>Measure W1</strong></div><p>Measure self-expansion preference in a general individual-difference battery.</p></div>
+      <div class="step"><div class="step-head"><span class="num">2</span><strong>Neutral transition</strong></div><p>Complete a short consumer task unrelated to the focal hypotheses.</p></div>
+      <div class="step"><div class="step-head"><span class="num">3</span><strong>Enter the skincare task</strong></div><p>Show the same recommendation for the same fine-line and firmness concerns.</p></div>
+      <div class="step"><div class="step-head"><span class="num">4</span><strong>Randomize information source</strong></div><p>Prior disclosure versus independent behavioral inference of the same concern.</p></div>
+      <div class="step"><div class="step-head"><span class="num">5</span><strong>Test H3</strong></div><p>Measure M1/M2, record the Personal Skincare Profile choice, and estimate the continuous M1 x W1 interaction.</p></div>
+    </div>
+    <div class="footer"><span>Study 3 · Testing the Verification-Side Boundary Condition</span><span>10 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page study">
-<div class="sheet">
-<h1 class="slide-title">Study 4 - Providing Experimental Process Evidence for the Threat Pathway</h1><div class="title-rule"></div>
-<div class="study-box purpose"><div class="study-label">Purpose</div><p>Provide experimental process evidence for the threat pathway by testing whether changing how the threatening experience is processed weakens the translation of self-threat into information avoidance.</p></div>
-<div class="study-box design"><div class="study-label">Design</div><p>Participants already know that hair thinning is a current personal concern. The platform either uses prior disclosure or independently identifies the concern from first-party behavior. Self-verification and self-threat are measured first; only then is reflection perspective randomized.</p><div class="manip"><strong>Privacy inference - Present:</strong> "You have not provided information about hair-thinning concerns. Based on your searches, browsing, product comparisons, purchases, and saved items on this platform, our system identifies hair thinning as one of your current personal concerns."<br/><strong>Self-distanced reflection:</strong> Participants mentally step back, view themselves in the situation from an observer-like perspective, and maintain that perspective while reflecting on what the platform judgment meant.</div><div class="design-ref"><strong>W2 manipulation basis:</strong> Ayduk &amp; Kross (2008); Kross &amp; Ayduk (2008). The manipulation check follows the information choice.</div></div>
-<div class="steps cols5">
-<div class="step"><div class="step-head"><span class="num">1</span><strong>Known private concern</strong></div><p>Consumers already know that hair thinning is a current concern.</p></div>
-<div class="step"><div class="step-head"><span class="num">2</span><strong>Same recommendation</strong></div><p>Both conditions receive the same hair-density and volumizing products.</p></div>
-<div class="step"><div class="step-head"><span class="num">3</span><strong>Manipulate inference</strong></div><p>Prior disclosure versus independent inference from behavioral records.</p></div>
-<div class="step"><div class="step-head"><span class="num">4</span><strong>Measure M1/M2, then W2</strong></div><p>Measure both responses before randomizing self-immersed versus self-distanced reflection.</p></div>
-<div class="step"><div class="step-head"><span class="num">5</span><strong>Behavioral outcome</strong></div><p>Offer a Personal Hair and Grooming Profile and record view versus decline.</p></div>
-</div>
-<div class="footer"><span>Study 4 - Experimental Process Evidence for the Threat Pathway</span><span>11 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Study 4 · Testing the Threat-Side Process Boundary Condition</h1><div class="title-rule"></div>
+    <div class="study-box purpose"><div class="study-label">Purpose</div><p>Test H4 with a randomized process intervention by asking whether self-distancing weakens the translation of an already formed self-threat into defensive information avoidance.</p></div>
+    <div class="study-box design"><div class="study-label">Design</div><p>A sequential 2 (Privacy Inference: absent vs. present) x 2 (Reflection Perspective: self-immersed vs. self-distanced) between-subjects experiment. Hair thinning is presented as a current personal concern and everyone receives the same hair-care recommendation. Privacy inference is randomized first, followed by measures of self-verification and self-threat. Only after M1 and M2 are recorded is W2 experimentally manipulated by randomly assigning participants to a self-immersed or self-distanced reflection condition. The behavioral profile choice follows immediately afterward.</p><div class="manip"><strong>Privacy Inference Present:</strong> "You have not provided information about hair-thinning concerns. Based on your searches, browsing, product comparisons, purchases, and saved items on this platform, our system identifies hair thinning as one of your current personal concerns."<br><strong>Self-Immersed:</strong> Revisit the experience through your own eyes and focus on what you thought and felt as the experience unfolded.<br><strong>Self-Distanced:</strong> Mentally step back from the experience and view yourself in the situation from an observer-like perspective while reflecting on what the platform judgment meant.</div><div class="design-ref"><strong>W2 manipulation source:</strong> The randomized perspective manipulation follows the original self-distancing experimental paradigm in Ayduk &amp; Kross (2008) and Kross &amp; Ayduk (2008); Kross, Ong, &amp; Ayduk (2023) provide the broader conceptual review. Measuring self-threat before randomizing W2 isolates whether self-distancing changes the translation of an already formed threat into avoidance rather than whether the threat initially forms.</div></div>
+    <div class="steps cols5">
+      <div class="step"><div class="step-head"><span class="num">1</span><strong>Enter the hair-care task</strong></div><p>Establish hair thinning as the target private concern and show the same recommendation.</p></div>
+      <div class="step"><div class="step-head"><span class="num">2</span><strong>Randomize inference</strong></div><p>Prior disclosure versus independent inference from first-party behavior.</p></div>
+      <div class="step"><div class="step-head"><span class="num">3</span><strong>Measure M1 and M2</strong></div><p>Measure self-verification and self-threat before any reflection manipulation.</p></div>
+      <div class="step"><div class="step-head"><span class="num">4</span><strong>Manipulate W2</strong></div><p>Randomly assign self-immersed versus self-distanced reflection after self-threat is measured.</p></div>
+      <div class="step"><div class="step-head"><span class="num">5</span><strong>Record information choice</strong></div><p>Offer a Personal Hair and Grooming Profile and estimate the M2 x W2 effect on view versus decline.</p></div>
+    </div>
+    <div class="footer"><span>Study 4 · Testing the Threat-Side Process Boundary Condition</span><span>11 / 12</span></div>
+  </div>
 </section>
+
 <section class="slide-page">
-<div class="sheet">
-<h1 class="slide-title">Expected Contributions</h1><div class="title-rule"></div>
-<div class="contrib-grid">
-<div class="contrib blue"><div class="label">Theoretical Contribution 1</div><h3>Conceptualize privacy inference as externally generated self-feedback</h3><p>When consumers already know private self-information to be accurate, a platform independently reaching the same conclusion changes the information's evidentiary status. The research therefore moves privacy inference beyond how firms acquire information and shows how external recognition changes the psychological meaning of existing self-knowledge.</p></div>
-<div class="contrib green"><div class="label">Theoretical Contribution 2</div><h3>Reveal opposing self-verification and self-threat pathways</h3><p>The same accurate inference strengthens self-verification through independent confirmation while increasing self-threat by revealing that an evaluatively sensitive attribute can be inferred from behavior. The two pathways have opposing effects on subsequent self-information acquisition.</p></div>
-<div class="contrib amber"><div class="label">Practical Contribution 1</div><h3>Explain sensitive recommendations without unnecessary disclosure of private inferences</h3><p>For evaluatively sensitive attributes, platforms can explain the recommendation in terms of task relevance or behavioral signals rather than foregrounding an identity-level judgment. The inference itself should be disclosed only when doing so meaningfully helps consumer decision making.</p></div>
-<div class="contrib rose"><div class="label">Practical Contribution 2</div><h3>Give consumers review and control over inferred profiles</h3><p>Platforms should use progressive disclosure for deeper inferred profiles and provide options to view, skip, correct, hide, or pause personalization. Consumers should be able to decline additional self-information without losing access to the core service.</p></div>
-</div>
-<div class="footer"><span>Expected Contributions</span><span>12 / 12</span></div>
-</div>
+  <div class="sheet">
+    <h1 class="slide-title">Expected Contributions</h1><div class="title-rule"></div>
+    <div class="contrib-grid">
+      <div class="contrib blue"><div class="label">Theoretical Contribution 1</div><h3>Conceptualize privacy inference as externally generated self-feedback</h3><p>Platform inference turns undisclosed private self-information into an externally generated judgment derived from behavior. By separating disclosure from independent inference while holding information content and accuracy constant, the research shows that how a platform comes to know the private self changes the psychological meaning of personalization.</p></div>
+      <div class="contrib green"><div class="label">Theoretical Contribution 2</div><h3>Reveal opposing self-verification and self-threat pathways</h3><p>An accurate inference can strengthen self-verification when it captures the consumer's self-view while increasing self-threat by making an evaluatively sensitive, potentially shame-linked attribute externally legible. These parallel pathways have opposing effects on subsequent self-information acquisition.</p></div>
+      <div class="contrib amber"><div class="label">Practical Contribution 1</div><h3>Explain sensitive recommendations without unnecessary disclosure of private inferences</h3><p>For evaluatively sensitive attributes, platforms can explain the recommendation in terms of task relevance or behavioral signals rather than foregrounding an identity-level judgment. The inference itself should be disclosed only when doing so meaningfully helps consumer decision making.</p></div>
+      <div class="contrib rose"><div class="label">Practical Contribution 2</div><h3>Give consumers review and control over inferred profiles</h3><p>Platforms should use progressive disclosure for deeper inferred profiles and provide options to view, skip, correct, hide, or pause personalization. Consumers should be able to decline additional self-information without losing access to the core service.</p></div>
+    </div>
+    <div class="footer"><span>Expected Contributions</span><span>12 / 12</span></div>
+  </div>
 </section>
+
 </div>
 </body>
 </html>
