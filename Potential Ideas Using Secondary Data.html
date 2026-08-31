@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secondary-Data Research Ideas for Leading Marketing Journals</title>
+<style>
+  :root{
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --accent:#111827;
+    --soft:#f3f4f6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",
+      "Microsoft YaHei",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:34px 24px 70px;
+  }
+  h1{
+    margin:0 0 8px;
+    font-size:30px;
+    letter-spacing:-0.3px;
+  }
+  .subtitle{
+    margin:0 0 28px;
+    color:var(--muted);
+    font-size:15px;
+  }
+  .note{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:24px;
+    font-size:14px;
+  }
+  .table-wrap{
+    overflow:auto;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin-bottom:28px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:880px;
+  }
+  th,td{
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    vertical-align:top;
+    font-size:13px;
+  }
+  th{
+    background:#fafafa;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  tr:last-child td{border-bottom:none;}
+  .rank{
+    font-weight:800;
+    font-size:16px;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--soft);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:2px 8px;
+    margin:2px 4px 2px 0;
+    font-size:12px;
+  }
+  .section-title{
+    margin:34px 0 14px;
+    font-size:20px;
+  }
+  .topic{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    margin:0 0 18px;
+    overflow:hidden;
+  }
+  .topic-head{
+    padding:18px 20px 14px;
+    border-bottom:1px solid var(--line);
+    background:#fcfcfc;
+  }
+  .topic-head h2{
+    margin:0 0 6px;
+    font-size:21px;
+  }
+  .topic-en{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:150px 1fr;
+  }
+  .label{
+    padding:14px 16px;
+    font-weight:700;
+    background:#fafafa;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .content{
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .grid > div:nth-last-child(-n+2){border-bottom:none;}
+  .content p{margin:0 0 8px;}
+  .content p:last-child{margin-bottom:0;}
+  ul{
+    margin:0;
+    padding-left:19px;
+  }
+  li{margin:3px 0;}
+  code{
+    background:#f4f4f5;
+    border:1px solid #e4e4e7;
+    border-radius:5px;
+    padding:1px 5px;
+    font-size:12.5px;
+  }
+  .formula{
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+    background:#f7f7f8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:9px 11px;
+    margin-top:7px;
+    font-size:13px;
+  }
+  .good{font-weight:700;}
+  .foot{
+    color:var(--muted);
+    font-size:12.5px;
+    margin-top:26px;
+  }
+  @media(max-width:760px){
+    .grid{grid-template-columns:1fr;}
+    .label{border-right:none;padding-bottom:6px;}
+    .content{padding-top:8px;}
+    .grid > div:nth-last-child(-n+2){border-bottom:1px solid var(--line);}
+    .grid > div:last-child{border-bottom:none;}
+  }
+
+  .formula{
+    font-family:inherit;
+    background:#f7f7f8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 14px;
+    margin-top:8px;
+    overflow-x:auto;
+    text-align:center;
+    font-size:14px;
+  }
+  .formula mjx-container{
+    margin:0.25em 0 !important;
+  }
+
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  }
+  .topic-en{
+    font-style:italic;
+  }
+
+  #langToggle{
+    position:fixed;
+    top:18px;
+    right:22px;
+    z-index:9999;
+    border:1px solid #d1d5db;
+    background:#ffffff;
+    color:#111827;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+  }
+  #langToggle:hover{
+    background:#f9fafb;
+  }
+  .lang-page{display:none;}
+  .lang-page.active{display:block;}
+  @media(max-width:760px){
+    #langToggle{
+      top:12px;
+      right:12px;
+      padding:7px 12px;
+    }
+    .wrap{padding-top:58px;}
+  }
+
+  .var-table-wrap{
+    overflow-x:auto;
+    margin-top:2px;
+  }
+  .var-table{
+    width:100%;
+    min-width:680px;
+    border-collapse:collapse;
+    background:#fff;
+  }
+  .var-table th,
+  .var-table td{
+    padding:9px 10px;
+    border:1px solid var(--line);
+    vertical-align:top;
+    font-size:12.8px;
+    line-height:1.5;
+  }
+  .var-table th{
+    background:#f8f9fa;
+    font-weight:700;
+  }
+  .var-table td:first-child{
+    width:135px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .var-table td:last-child{
+    width:220px;
+  }
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script><script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><style>
+/* ===== Translation-safe responsive layer ===== */
+:root{
+  --page-max:1180px;
+}
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+body{
+  font-family:"Noto Sans Display","Noto Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+}
+.lang-page{
+  display:none;
+  width:min(var(--page-max), calc(100% - 40px));
+  max-width:var(--page-max);
+  margin:0 auto;
+  padding:34px 0 72px;
+  min-width:0;
+}
+.lang-page.active{display:block;}
+.lang-page h1,
+.lang-page h2,
+.lang-page p,
+.lang-page li,
+.lang-page td,
+.lang-page th,
+.lang-page .content,
+.lang-page .label,
+.lang-page .topic-en{
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+}
+.table-wrap,
+.var-table-wrap{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:visible;
+  -webkit-overflow-scrolling:touch;
+}
+table{
+  min-width:0;
+  width:100%;
+}
+th{
+  white-space:normal;
+}
+.topic{
+  overflow:visible;
+}
+.grid{
+  min-width:0;
+}
+.label,
+.content{
+  min-width:0;
+}
+.content > *,
+.content table,
+.content .formula{
+  max-width:100%;
+}
+.var-table{
+  min-width:0;
+  table-layout:auto;
+}
+.var-table th,
+.var-table td{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.var-table td:first-child{
+  width:135px;
+  white-space:normal;
+}
+.var-table td:last-child{
+  width:220px;
+}
+.formula{
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:visible;
+  white-space:normal;
+}
+.formula mjx-container{
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:visible;
+}
+#langToggle{
+  max-width:calc(100vw - 24px);
+}
+@media screen and (max-width:900px){
+  .lang-page{
+    width:calc(100% - 28px);
+    padding-top:62px;
+  }
+  .grid{grid-template-columns:1fr;}
+  .label{
+    border-right:none;
+    border-bottom:none;
+    padding:12px 14px 5px;
+  }
+  .content{
+    padding:7px 14px 14px;
+  }
+  .topic-head{padding:16px 15px 12px;}
+  .table-wrap table{min-width:760px;}
+  .var-table{min-width:620px;}
+}
+@media screen and (max-width:560px){
+  .lang-page{width:calc(100% - 20px);}
+  h1{font-size:25px;line-height:1.22;}
+  .section-title{font-size:18px;}
+  .topic-head h2{font-size:19px;}
+  th,td{font-size:12.5px;padding:10px 10px;}
+  .content,.label{font-size:13.5px;}
+}
+
+/* ===== Print layer: English report, no controls ===== */
+@media print{
+  @page{size:A4 landscape;margin:11mm 12mm 9mm;}
+  html,body{
+    background:#fff !important;
+    color:#1f2937;
+    overflow:visible !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  #langToggle{display:none !important;}
+  .lang-page{display:none !important;}
+  .lang-page[data-lang="en"]{
+    display:block !important;
+    width:auto !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+  h1{
+    font-size:24pt;
+    line-height:1.15;
+    margin:0 0 8pt;
+    color:#173b61;
+  }
+  .section-title{
+    font-size:15.5pt;
+    margin:18pt 0 8pt;
+    color:#173b61;
+  }
+  .table-wrap,
+  .var-table-wrap,
+  .formula{
+    overflow:visible !important;
+  }
+  table,
+  .var-table{
+    width:100% !important;
+    min-width:0 !important;
+    table-layout:auto;
+  }
+  thead{display:table-header-group;}
+  .table-wrap > table > thead th:first-child,
+  .table-wrap > table > tbody td:first-child{width:12mm;white-space:nowrap;}
+  .table-wrap > table > thead th:last-child,
+  .table-wrap > table > tbody td:last-child{width:30mm;}
+  tr{break-inside:avoid;page-break-inside:avoid;}
+  th,td{
+    font-size:8.5pt;
+    line-height:1.34;
+    padding:5.5pt 6pt;
+  }
+  th{white-space:normal;}
+  .rank{font-size:10pt;}
+  .tag{font-size:7.8pt;padding:1pt 5pt;}
+  .topic{
+    break-before:page;
+    page-break-before:always;
+    border:none;
+    border-radius:0;
+    overflow:visible;
+    margin:0;
+  }
+  .topic-head{
+    padding:0 0 8pt;
+    margin-bottom:8pt;
+    border-bottom:1.2pt solid #cfd6df;
+    background:#fff;
+  }
+  .topic-head h2{
+    font-size:16pt;
+    line-height:1.2;
+    color:#173b61;
+    margin:0 0 3pt;
+  }
+  .topic-en{font-size:9pt;color:#667788;}
+  .grid{
+    display:grid;
+    grid-template-columns:34mm 1fr;
+    border:1px solid #d8dee6;
+    border-bottom:none;
+  }
+  .label{
+    font-size:9pt;
+    line-height:1.3;
+    padding:7pt 8pt;
+    background:#f5f7fa;
+    border-right:1px solid #d8dee6;
+    border-bottom:1px solid #d8dee6;
+  }
+  .content{
+    font-size:9pt;
+    line-height:1.42;
+    padding:7pt 9pt;
+    border-bottom:1px solid #d8dee6;
+  }
+  .content p{margin:0 0 5pt;}
+  li{margin:2pt 0;}
+  .var-table th,.var-table td{
+    font-size:8pt;
+    line-height:1.3;
+    padding:4.5pt 5pt;
+  }
+  .var-table td:first-child{width:28mm;white-space:normal;}
+  .var-table td:last-child{width:46mm;}
+  .formula{
+    font-size:9pt;
+    padding:6pt 8pt;
+    margin-top:5pt;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .formula mjx-container{
+    max-width:100%;
+    overflow:visible !important;
+  }
+  .foot{font-size:8pt;}
+}
+</style><style>
+.print-target{display:none;}
+@media print{
+  .print-target{display:block;font-size:8.2pt;color:#566878;margin-top:4pt;font-weight:600;}
+  .target-label,.target-content{display:none !important;}
+}
+</style>
+<style id="unified-topic-titles">
+/* Unified research-idea title hierarchy */
+.topic-head h2,
+.topic-head .topic-en{
+  margin:0;
+  font-size:21px;
+  line-height:1.28;
+  font-weight:750;
+  color:var(--text);
+  font-style:normal;
+  letter-spacing:-0.12px;
+}
+.topic-head h2{margin-bottom:2px;}
+.topic-head .topic-en{display:block;}
+@media screen and (max-width:560px){
+  .topic-head h2,
+  .topic-head .topic-en{font-size:19px;line-height:1.3;}
+}
+@media print{
+  .topic-head h2,
+  .topic-head .topic-en{
+    margin:0;
+    font-size:12.2pt;
+    line-height:1.22;
+    font-weight:700;
+    color:#173b61;
+    font-style:normal;
+    letter-spacing:0;
+  }
+  .topic-head h2{margin-bottom:1.5pt;}
+}
+</style>
+</head>
+<body><button id="langToggle" type="button">English</button><div class="lang-page active" data-lang="zh">
+<h1>高水平营销期刊二手数据选题筛选</h1>
+<h2 class="section-title">一、选题总览</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>选题</th>
+<th>核心问题</th>
+<th>主要数据</th>
+<th>主模型</th>
+<th>目标期刊</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank">1</td>
+<td>时尚趋势</td>
+<td>趋势预测是在发现趋势，还是在塑造趋势？</td>
+<td>WGSN + Vogue/WWD</td>
+<td>预测后采用与趋同比较</td>
+<td><span class="tag">Marketing Science</span></td>
+</tr><tr>
+<td class="rank">2</td>
+<td>全球品牌的语言负债</td>
+<td>语言摩擦是否影响真实品牌表现？</td>
+<td>Passport + 语言数据</td>
+<td>跨市场比较 + 改名前后比较</td>
+<td><span class="tag">JMR</span></td>
+</tr><tr>
+<td class="rank">3</td>
+<td>并购后的品牌迁移</td>
+<td>被收购品牌应该改多少、改多快？</td>
+<td>LSEG Deals + Passport</td>
+<td>品牌迁移前后比较</td>
+<td><span class="tag">JM</span></td>
+</tr><tr>
+<td class="rank">4</td>
+<td>品牌防火墙</td>
+<td>品牌架构能否隔离企业负面声誉？</td>
+<td>LSEG + Passport</td>
+<td>负面事件前后比较</td>
+<td><span class="tag">JM</span></td>
+</tr></tbody>
+</table>
+</div>
+<h2 class="section-title">二、具体选题与研究设计</h2><section class="topic">
+<div class="topic-head">
+<h2>1. 时尚趋势</h2>
+<div class="topic-en">Predicting Fashion or Shaping It? How Trend Forecasts Influence Brand Adoption</div>
+<div class="print-target">目标期刊：Marketing Science</div></div>
+<div class="grid"><div class="label">背景</div><div class="content">WGSN 等趋势预测机构被大量时尚品牌、设计师和零售企业共同使用，因此其预测可能不仅反映未来，也可能影响企业下一季的设计决策。当许多品牌依据相同预测行动时，原本分散的设计选择可能逐渐同步，预测本身也可能推动某些趋势真正形成。现有研究更多关注趋势扩散和预测准确性，较少讨论趋势预测机构是否会通过协调品牌预期而改变市场本身。</div><div class="label">核心问题</div><div class="content"><strong>时尚趋势预测是在提前发现趋势，还是会推动品牌共同采用某些设计元素，从而塑造趋势本身？</strong></div><div class="label">变量与数据</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>变量角色</th><th>变量定义</th><th>数据来源</th></tr></thead><tbody><tr><td>因变量 1</td><td><strong>Trend Adoption</strong><br/>品牌下一季是否采用被预测的趋势元素</td><td><strong>Vogue Archive / WWD</strong> + 其他合法时尚资料</td></tr><tr><td>因变量 2</td><td><strong>Cross-brand Similarity</strong><br/>预测后不同品牌在设计上的相似程度</td><td>Vogue Archive / WWD + 视觉特征计算</td></tr><tr><td>核心自变量</td><td><strong>Trend Forecast Strength / Forecast Surprise</strong><br/>WGSN 对某一趋势的预测强度，或预测强度相对于当期流行程度的超前程度</td><td><strong>WGSN</strong></td></tr><tr><td>当前趋势水平</td><td>预测发布时，该趋势已经在市场中出现的程度</td><td>Vogue Archive / WWD + 其他时尚资料</td></tr><tr><td>核心关系</td><td>趋势预测越强 → 下一季采用概率越高<br/>多个品牌共同响应 → 品牌之间的设计相似度可能上升</td><td>由上述数据合并构建</td></tr></tbody></table></div></div><div class="label">模型</div><div class="content"><p>先检验某一趋势被强烈预测后，下一季采用它的品牌是否更多。再进一步观察这些共同预测是否伴随品牌之间更高的设计相似度，从而判断预测机构是否可能在“发现趋势”之外发挥市场协调作用。</p><div class="formula">\[
+\Pr(\text{Adopt}=1)
+=
+\operatorname{logit}^{-1}
+\left(
+\beta_1 \text{Trend Forecast Strength}
++
+\text{Controls}
+\right)
+\]</div></div><div class="label">贡献</div><div class="content"><ul><li>把时尚趋势研究从“预测是否准确”推进到“预测是否会塑造市场”。</li><li>将趋势预测机构理解为可能影响品牌决策的市场协调者，而不仅是信息提供者。</li><li>解释为什么大量品牌依赖相同趋势信息时，可能出现更强的同步跟随和产品趋同。</li></ul></div><div class="target-label label">目标期刊</div><div class="content target-content"><strong>Marketing Science</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>2. 全球品牌的语言负债</h2>
+<div class="topic-en">Lost in Translation? The Linguistic Liability of Global Brand Names</div>
+<div class="print-target">目标期刊：Journal of Marketing Research (JMR)</div></div>
+<div class="grid"><div class="label">背景</div><div class="content">全球品牌通常沿用统一名称，以维持识别度、传播效率和全球一致性。但同一个名称在不同语言中的发音难度、音节结构、拼写熟悉度和语音联想并不相同。已有研究表明，这些语言特征会影响消费者判断，但证据主要来自实验。尚不清楚的是，这种语言摩擦是否足以影响真实市场表现，以及企业通过音译、意译或其他本地化命名能否缓解这一影响。</div><div class="label">核心问题</div><div class="content"><strong>同一个全球品牌名在不同语言市场中的语言摩擦，是否会降低真实市场表现？本地化命名能否减弱这一影响？</strong></div><div class="label">变量与数据</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>变量角色</th><th>变量定义</th><th>数据来源</th></tr></thead><tbody><tr><td>因变量</td><td><strong>品牌市场表现</strong><br/>品牌市场份额、市场份额增长、品类排名</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>核心自变量</td><td><strong>Linguistic Friction</strong><br/>品牌名称在当地语言中的发音难度、音系适配度、音节复杂度等</td><td>开放语言数据库 + 自行计算</td></tr><tr><td>调节变量</td><td><strong>Name Localization</strong><br/>名称不变、音译、意译、音义结合或完全本地化</td><td>品牌官网、当地市场公开资料 + 人工编码</td></tr><tr><td>核心关系</td><td>语言摩擦越高 → 品牌市场表现越弱<br/>本地化命名预计会削弱这一负面关系</td><td>由上述数据合并构建</td></tr></tbody></table></div></div><div class="label">模型</div><div class="content"><p>比较同一个品牌在不同语言市场中的表现，同时控制品牌自身、当地市场、品类和年份差异。这样可以尽量排除品牌全球热度和当地市场环境的影响。若能找到真实的本地改名案例，还可以进一步比较改名前后的市场表现。</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1 \text{Linguistic Friction}
++
+\beta_2 \text{Name Localization}
++
+\beta_3 \bigl(\text{Friction}\times\text{Localization}\bigr)
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">贡献</div><div class="content"><ul><li>将品牌命名研究从“什么名字更容易被消费者喜欢”推进到“同一个名字为什么在不同市场具有不同经济价值”。</li><li>揭示全球统一命名的隐藏成本，即品牌一致性和传播效率之外，还存在语言适配带来的市场差异。</li><li>为企业判断何时坚持全球统一名称、何时进行本地化命名提供直接依据。</li></ul></div><div class="target-label label">目标期刊</div><div class="content target-content"><strong>Journal of Marketing Research (JMR)</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>3. 并购后的品牌迁移</h2>
+<div class="topic-en">Owned Overnight, Rebranded Over Time: The Market Consequences of Post-Acquisition Brand Migration</div>
+<div class="print-target">目标期刊：Journal of Marketing (JM)</div></div>
+<div class="grid"><div class="label">背景</div><div class="content">并购可以在一天内改变法律所有权，但消费者心中的品牌身份通常不会同步改变。收购方需要决定是保留目标品牌、增加母品牌背书，还是逐步用收购方品牌替换，同时还要决定这一过程推进多快。现有研究更多关注财务整合和交易绩效，品牌身份迁移如何影响被收购品牌的真实市场表现仍缺乏系统的大样本证据。</div><div class="label">核心问题</div><div class="content"><strong>收购后，被收购品牌应该改多少、改多快，才能最大限度保留原有品牌价值？</strong></div><div class="label">变量与数据</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>变量角色</th><th>变量定义</th><th>数据来源</th></tr></thead><tbody><tr><td>因变量</td><td><strong>并购后品牌表现</strong><br/>被收购品牌的市场份额和市场份额增长</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>核心自变量 1</td><td><strong>Migration Depth</strong><br/>品牌身份改变程度：保留 → 母品牌背书 → 完全替换</td><td>公司公告、品牌官网、Factiva + 人工编码</td></tr><tr><td>核心自变量 2</td><td><strong>Migration Speed</strong><br/>从并购完成到品牌身份发生改变所经历的时间</td><td>并购完成日：<strong>LSEG Workspace – Deals</strong><br/>品牌迁移日：公司公告、Factiva</td></tr><tr><td>调节变量</td><td><strong>Pre-acquisition Brand Equity</strong><br/>并购前目标品牌原有市场实力</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>控制变量</td><td>交易规模、交易时间、收购方与目标方特征等</td><td><strong>LSEG Workspace – Deals</strong></td></tr><tr><td>核心关系</td><td>迁移程度与迁移速度 → 并购后品牌表现<br/>原有品牌资产越强，过快或过深迁移的代价可能越大</td><td>由上述数据合并构建</td></tr></tbody></table></div></div><div class="label">模型</div><div class="content"><p>以品牌真正发生改名、背书或替换的时间为界，比较迁移前后的市场表现，并比较不同迁移程度和迁移速度。若同一个被收购品牌在不同国家采用不同迁移时间，还可以利用这种时间差进一步识别品牌迁移的影响。</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1 \text{Migration Depth}
++
+\beta_2 \text{Migration Speed}
++
+\beta_3 \text{Target Brand Equity}
++
+\text{Interactions}
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">贡献</div><div class="content"><ul><li>区分法律所有权转移与消费者品牌身份转移，强调两者并不是同一个过程，也未必以相同速度发生。</li><li>把并购后的“整合”具体化为品牌迁移程度和迁移速度两个可观察的营销决策。</li><li>直接回答并购后的核心管理问题，即被收购品牌应该保留多少原有身份，以及何时进行更深度的整合。</li></ul></div><div class="target-label label">目标期刊</div><div class="content target-content"><strong>Journal of Marketing (JM)</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>4. 品牌防火墙</h2>
+<div class="topic-en">The Brand Firewall: How Brand Architecture Contains Corporate Reputation Spillovers</div>
+<div class="print-target">目标期刊：Journal of Marketing (JM)</div></div>
+<div class="grid"><div class="label">背景</div><div class="content">品牌架构决定企业声誉在旗下品牌之间如何传递。母公司与产品品牌联系越紧密，企业的正向声誉和品牌资产越容易被共享，但一旦发生环境、劳工、治理或商业伦理争议，负面影响也可能更快扩散。现有研究分别讨论了品牌架构和危机溢出，但较少直接检验既有品牌架构是否会系统性地改变企业负面事件对真实市场需求的影响。</div><div class="label">核心问题</div><div class="content"><strong>品牌架构能否隔离企业负面事件对旗下品牌需求的冲击？</strong></div><div class="label">变量与数据</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>变量角色</th><th>变量定义</th><th>数据来源</th></tr></thead><tbody><tr><td>因变量</td><td><strong>品牌市场表现</strong><br/>企业争议发生前后，旗下品牌市场份额及其变化</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>核心自变量</td><td><strong>Corporate Controversy</strong><br/>环境、劳工、治理、商业伦理等企业负面事件及发生时间</td><td><strong>LSEG Workspace</strong></td></tr><tr><td>调节变量</td><td><strong>Parent–Brand Linkage</strong><br/>产品品牌与母公司之间的可见关联程度</td><td>品牌名称、官网、包装、公司资料 + 人工编码</td></tr><tr><td>品牌归属</td><td><strong>Brand–Parent Mapping</strong><br/>每个消费品牌对应的母公司</td><td>LSEG Workspace + 公司资料</td></tr><tr><td>核心关系</td><td>企业负面事件 → 旗下品牌表现下降<br/>品牌与母公司联系越强 → 负面影响预计越大</td><td>由上述数据合并构建</td></tr></tbody></table></div></div><div class="label">模型</div><div class="content"><p>以企业负面事件为时间节点，比较事件发生前后旗下品牌的市场表现。更重要的是，在同一家公司内部比较与母公司联系强弱不同的品牌，以判断品牌架构是否会放大或减弱声誉传导。</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1
+\bigl(
+\text{Post-Controversy}
+\times
+\text{Parent--Brand Linkage}
+\bigr)
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">贡献</div><div class="content"><ul><li>将品牌架构从“如何组织品牌组合”的静态问题推进为企业如何配置声誉风险的动态机制。</li><li>揭示品牌资产共享与负面声誉隔离之间的结构性权衡，即品牌联系越紧密，收益和风险都更容易共同传递。</li><li>为多品牌企业在品牌组合设计、ESG 风险和危机管理中的长期决策提供依据。</li></ul></div><div class="target-label label">目标期刊</div><div class="content target-content"><strong>Journal of Marketing (JM)</strong></div></div>
+</section>
+</div><div class="lang-page" data-lang="en">
+<h1>Secondary-Data Research Ideas for Leading Marketing Journals</h1>
+<h2 class="section-title">1. Overview</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Topic</th>
+<th>Core Question</th>
+<th>Main Data</th>
+<th>Empirical Approach</th>
+<th>Target Journal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank">1</td>
+<td>Fashion Trends</td>
+<td>Do trend forecasts identify trends or help create them?</td>
+<td>WGSN + Vogue/WWD</td>
+<td>Forecast-to-adoption and convergence analysis</td>
+<td><span class="tag">Marketing Science</span></td>
+</tr><tr>
+<td class="rank">2</td>
+<td>Linguistic Liability of Global Brand Names</td>
+<td>Does linguistic friction affect real brand performance?</td>
+<td>Passport + linguistic data</td>
+<td>Cross-market comparison + name-change comparison</td>
+<td><span class="tag">JMR</span></td>
+</tr><tr>
+<td class="rank">3</td>
+<td>Post-Acquisition Brand Migration</td>
+<td>How far and how fast should an acquired brand change?</td>
+<td>LSEG Deals + Passport</td>
+<td>Before/after brand-migration comparison</td>
+<td><span class="tag">JM</span></td>
+</tr><tr>
+<td class="rank">4</td>
+<td>The Brand Firewall</td>
+<td>Can brand architecture contain negative reputation spillovers?</td>
+<td>LSEG + Passport</td>
+<td>Before/after controversy comparison</td>
+<td><span class="tag">JM</span></td>
+</tr></tbody>
+</table>
+</div>
+<h2 class="section-title">2. Research Ideas and Designs</h2><section class="topic">
+<div class="topic-head">
+<h2>1. Fashion Trends</h2>
+<div class="topic-en">Predicting Fashion or Shaping It? How Trend Forecasts Influence Brand Adoption</div>
+<div class="print-target">Target Journal: Marketing Science</div></div>
+<div class="grid"><div class="label">Background</div><div class="content">Trend forecasters such as WGSN are widely used by fashion brands, designers, and retailers. Their forecasts may therefore do more than anticipate the future because they can also influence next-season design decisions. When many brands respond to the same forecast, otherwise decentralized choices may become more synchronized and the forecast itself may help a trend emerge. Prior work has examined trend diffusion and forecast accuracy, but less is known about whether forecasting intermediaries actively shape the market they describe.</div><div class="label">Core Question</div><div class="content"><strong>Do fashion forecasts merely identify emerging trends, or do they help create them by encouraging brands to adopt the same design elements?</strong></div><div class="label">Variables and Data</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>Role</th><th>Variable / Definition</th><th>Data Source</th></tr></thead><tbody><tr><td>Dependent variable 1</td><td><strong>Trend Adoption</strong><br/>Whether a brand adopts the forecast trend in the following season</td><td><strong>Vogue Archive / WWD</strong> + other lawful fashion sources</td></tr><tr><td>Dependent variable 2</td><td><strong>Cross-brand Similarity</strong><br/>Similarity in design across brands after the forecast</td><td>Vogue Archive / WWD + constructed visual measures</td></tr><tr><td>Main explanatory variable</td><td><strong>Trend Forecast Strength / Forecast Surprise</strong><br/>WGSN forecast emphasis, or forecast strength relative to the trend's current prevalence</td><td><strong>WGSN</strong></td></tr><tr><td>Current trend prevalence</td><td>How common the focal trend already is when the forecast is issued</td><td>Vogue Archive / WWD + other fashion sources</td></tr><tr><td>Core relationship</td><td>Stronger forecasts → higher next-season adoption<br/>Shared responses across brands → greater design similarity</td><td>Constructed by merging the sources above</td></tr></tbody></table></div></div><div class="label">Empirical Approach</div><div class="content"><p>First examine whether strongly forecast trends are adopted by more brands in the following season. Then test whether common forecasts are followed by greater similarity across brands. Together, the two analyses help distinguish simple prediction from a broader market-coordination role.</p><div class="formula">\[
+\Pr(\text{Adopt}=1)
+=
+\operatorname{logit}^{-1}
+\left(
+\beta_1 \text{Trend Forecast Strength}
++
+\text{Controls}
+\right)
+\]</div></div><div class="label">Contribution</div><div class="content"><ul><li>Moves fashion-trend research beyond forecast accuracy to ask whether forecasts actively shape the market.</li><li>Positions trend forecasters as potential market coordinators rather than passive information providers.</li><li>Explains why reliance on common trend information may synchronize brand decisions and increase product convergence.</li></ul></div><div class="target-label label">Target Journal</div><div class="content target-content"><strong>Marketing Science</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>2. Linguistic Liability of Global Brand Names</h2>
+<div class="topic-en">Lost in Translation? The Linguistic Liability of Global Brand Names</div>
+<div class="print-target">Target Journal: Journal of Marketing Research (JMR)</div></div>
+<div class="grid"><div class="label">Background</div><div class="content">Global brands often keep the same name across countries to preserve recognition, communication efficiency, and consistency. Yet the same name can differ sharply across languages in pronunciation difficulty, syllabic structure, spelling familiarity, and phonological associations. Prior research shows that these features can shape consumer judgments, but most evidence comes from experiments. It remains unclear whether such linguistic frictions are large enough to affect real market performance and whether local naming can offset them.</div><div class="label">Core Question</div><div class="content"><strong>Does linguistic friction reduce a global brand's market performance across language markets, and can local naming weaken that effect?</strong></div><div class="label">Variables and Data</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>Role</th><th>Variable / Definition</th><th>Data Source</th></tr></thead><tbody><tr><td>Dependent variable</td><td><strong>Brand market performance</strong><br/>Market share, market-share growth, and category rank</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>Main explanatory variable</td><td><strong>Linguistic Friction</strong><br/>Pronunciation difficulty, phonological fit, syllabic complexity, and related measures in each language market</td><td>Open linguistic databases + constructed measures</td></tr><tr><td>Moderator</td><td><strong>Name Localization</strong><br/>Unchanged name, transliteration, translation, hybrid form, or fully localized name</td><td>Brand websites, local-market materials + hand coding</td></tr><tr><td>Core relationship</td><td>Greater linguistic friction → weaker market performance<br/>Local naming is expected to weaken this negative relationship</td><td>Constructed by merging the sources above</td></tr></tbody></table></div></div><div class="label">Empirical Approach</div><div class="content"><p>Compare the same brand across different language markets while accounting for brand-specific, local-market, category, and year differences. This helps separate linguistic effects from broader changes in global brand popularity or local market conditions. Where a real local-name change can be identified, performance can also be compared before and after the change.</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1 \text{Linguistic Friction}
++
+\beta_2 \text{Name Localization}
++
+\beta_3 \bigl(\text{Friction}\times\text{Localization}\bigr)
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">Contribution</div><div class="content"><ul><li>Moves brand-naming research from asking which names are generally more appealing to asking why the same name carries different economic value across markets.</li><li>Identifies a hidden cost of global naming standardization alongside its benefits in consistency and communication efficiency.</li><li>Provides a clearer basis for deciding when firms should preserve one global name and when local adaptation is likely to create value.</li></ul></div><div class="target-label label">Target Journal</div><div class="content target-content"><strong>Journal of Marketing Research (JMR)</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>3. Post-Acquisition Brand Migration</h2>
+<div class="topic-en">Owned Overnight, Rebranded Over Time: The Market Consequences of Post-Acquisition Brand Migration</div>
+<div class="print-target">Target Journal: Journal of Marketing (JM)</div></div>
+<div class="grid"><div class="label">Background</div><div class="content">An acquisition can transfer legal ownership overnight, but consumer-held brand identity rarely changes that quickly. The acquirer must decide whether to retain, endorse, or replace the target brand and how quickly to make that transition. Existing research focuses largely on financial integration and deal outcomes. Systematic large-sample evidence on how brand-identity migration affects the acquired brand's market performance remains limited.</div><div class="label">Core Question</div><div class="content"><strong>How far and how fast should an acquirer change an acquired brand while preserving its existing market value?</strong></div><div class="label">Variables and Data</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>Role</th><th>Variable / Definition</th><th>Data Source</th></tr></thead><tbody><tr><td>Dependent variable</td><td><strong>Post-acquisition brand performance</strong><br/>Market share and market-share growth of the acquired brand</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>Main explanatory variable 1</td><td><strong>Migration Depth</strong><br/>Degree of identity change: retain → endorse → replace</td><td>Company announcements, brand websites, Factiva + hand coding</td></tr><tr><td>Main explanatory variable 2</td><td><strong>Migration Speed</strong><br/>Time between deal completion and a visible change in brand identity</td><td>Deal completion date: <strong>LSEG Workspace – Deals</strong><br/>Migration date: company announcements / Factiva</td></tr><tr><td>Moderator</td><td><strong>Pre-acquisition Brand Equity</strong><br/>The acquired brand's market strength before the deal</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>Controls</td><td>Deal value, deal timing, acquirer characteristics, target characteristics, and related transaction information</td><td><strong>LSEG Workspace – Deals</strong></td></tr><tr><td>Core relationship</td><td>Migration depth and speed → post-acquisition brand performance<br/>Stronger acquired brands may be more vulnerable to rapid or extensive migration</td><td>Constructed by merging the sources above</td></tr></tbody></table></div></div><div class="label">Empirical Approach</div><div class="content"><p>Use the actual date of a visible brand change and compare market performance before and after the migration. Then compare different migration depths and speeds. If the same acquired brand is migrated at different times across countries, those timing differences can provide additional leverage for identifying the effect of brand migration.</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1 \text{Migration Depth}
++
+\beta_2 \text{Migration Speed}
++
+\beta_3 \text{Target Brand Equity}
++
+\text{Interactions}
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">Contribution</div><div class="content"><ul><li>Separates legal ownership transfer from consumer-held brand identity and shows that the two need not move at the same speed.</li><li>Translates the broad idea of post-acquisition integration into two observable marketing decisions: how much to change and how quickly to change it.</li><li>Directly addresses how much of the acquired brand's existing identity should be preserved and when deeper integration becomes worthwhile.</li></ul></div><div class="target-label label">Target Journal</div><div class="content target-content"><strong>Journal of Marketing (JM)</strong></div></div>
+</section><section class="topic">
+<div class="topic-head">
+<h2>4. The Brand Firewall</h2>
+<div class="topic-en">The Brand Firewall: How Brand Architecture Contains Corporate Reputation Spillovers</div>
+<div class="print-target">Target Journal: Journal of Marketing (JM)</div></div>
+<div class="grid"><div class="label">Background</div><div class="content">Brand architecture determines how reputation travels across a firm's portfolio. Stronger links between the corporate parent and product brands can make positive reputation and brand equity easier to share, but the same links may also amplify damage when the firm faces an environmental, labor, governance, or ethics controversy. Prior research has examined brand architecture and scandal spillovers separately. Less is known about whether pre-existing brand architecture systematically changes the impact of corporate controversies on real consumer demand.</div><div class="label">Core Question</div><div class="content"><strong>Can brand architecture shield product brands from negative corporate reputation spillovers?</strong></div><div class="label">Variables and Data</div><div class="content"><div class="var-table-wrap"><table class="var-table"><thead><tr><th>Role</th><th>Variable / Definition</th><th>Data Source</th></tr></thead><tbody><tr><td>Dependent variable</td><td><strong>Brand market performance</strong><br/>Brand market share and changes around a corporate controversy</td><td><strong>Euromonitor Passport</strong></td></tr><tr><td>Main explanatory variable</td><td><strong>Corporate Controversy</strong><br/>Environmental, labor, governance, ethics, and other firm-level misconduct events</td><td><strong>LSEG Workspace</strong></td></tr><tr><td>Moderator</td><td><strong>Parent–Brand Linkage</strong><br/>How visibly the product brand is connected to the corporate parent</td><td>Brand names, websites, packaging, company materials + hand coding</td></tr><tr><td>Brand ownership</td><td><strong>Brand–Parent Mapping</strong><br/>Links each consumer brand to its parent firm</td><td>LSEG Workspace + company materials</td></tr><tr><td>Core relationship</td><td>Corporate controversy → weaker brand performance<br/>Stronger parent-brand linkage → larger expected decline</td><td>Constructed by merging the sources above</td></tr></tbody></table></div></div><div class="label">Empirical Approach</div><div class="content"><p>Use corporate controversies as focal events and compare brand performance before and after each event. More importantly, compare brands within the same company that differ in how visibly they are linked to the parent. This makes it easier to assess whether brand architecture amplifies or contains reputation spillovers.</p><div class="formula">\[
+\text{Market Share}
+=
+\beta_1
+\bigl(
+\text{Post-Controversy}
+\times
+\text{Parent--Brand Linkage}
+\bigr)
++
+\text{Controls}
++
+\varepsilon
+\]</div></div><div class="label">Contribution</div><div class="content"><ul><li>Recasts brand architecture from a static portfolio-design choice into a mechanism for allocating reputational risk.</li><li>Reveals a structural trade-off between sharing positive brand equity and containing negative reputation spillovers.</li><li>Provides direct implications for portfolio design, ESG risk, and crisis management in multi-brand firms.</li></ul></div><div class="target-label label">Target Journal</div><div class="content target-content"><strong>Journal of Marketing (JM)</strong></div></div>
+</section>
+</div><script>
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('langToggle');
+  const pages = document.querySelectorAll('.lang-page');
+
+  function setLanguage(lang) {
+    pages.forEach(page => {
+      page.classList.toggle('active', page.getAttribute('data-lang') === lang);
+    });
+
+    button.textContent = (lang === 'zh') ? 'English' : '中文';
+    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    localStorage.setItem('researchIdeasLanguage', lang);
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  const saved = localStorage.getItem('researchIdeasLanguage');
+  setLanguage(saved === 'en' ? 'en' : 'zh');
+
+  button.addEventListener('click', function () {
+    const current = document.querySelector('.lang-page.active').getAttribute('data-lang');
+    setLanguage(current === 'zh' ? 'en' : 'zh');
+  });
+});
+</script></body>
+</html>
