@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Who Is Responsible for What We Create with AI? How Input Representation Shapes Shared Agency and Accountability</title>
+<style>
+  :root{
+    --navy:#17365d;
+    --blue:#2f6fa3;
+    --blue-light:#edf5fc;
+    --green:#276749;
+    --green-light:#eef8f0;
+    --amber:#a66d1e;
+    --amber-light:#fff8ec;
+    --rose:#9a4f57;
+    --rose-light:#fff3f4;
+    --ink:#1f2933;
+    --gray:#4a5568;
+    --muted:#718096;
+    --border:#d7dee8;
+    --paper:#fff;
+    --bg:#eef3f7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.62;font-size:15px;
+  }
+  .deck{padding:1px 0 36px}
+  .slide{
+    max-width:1180px;min-height:650px;margin:34px auto;background:var(--paper);
+    border-radius:16px;box-shadow:0 4px 18px rgba(23,54,93,.12);
+    padding:42px 48px;page-break-after:always;position:relative;
+  }
+  .slide.cover-only{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  h1{font-size:28px;color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:10px;margin-bottom:22px;letter-spacing:0}
+  h2{font-size:20px;color:var(--blue);margin:19px 0 10px}
+  h3{font-size:17px;color:var(--navy);margin:0 0 8px}
+  p,li{color:var(--gray)} p{margin:7px 0} ul,ol{padding-left:20px;margin:6px 0} li{margin:4px 0}
+  .cover-title{border:none;font-size:36px;line-height:1.32;margin:0;max-width:980px}
+  .cover-sub{font-size:19px;color:var(--blue);margin-top:14px}
+  .cover-meta{margin-top:18px;color:var(--muted);font-size:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:14px 0}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}
+  .panel{border:1.5px solid var(--border);border-radius:14px;padding:18px;background:#fff}
+  .panel.blue{background:var(--blue-light);border-color:#bdd7ee}
+  .panel.green{background:var(--green-light);border-color:#c9e8ce}
+  .panel.amber{background:var(--amber-light);border-color:#e6c999}
+  .panel.rose{background:var(--rose-light);border-color:#e4c2c6}
+  .section-label{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+  .blue-label{color:var(--blue)}.green-label{color:var(--green)}.amber-label{color:var(--amber)}
+  .insight{background:#f8fafc;border-left:4px solid var(--blue);padding:13px 16px;border-radius:0 10px 10px 0;margin:15px 0;color:var(--gray)}
+  .insight.green{border-left-color:var(--green);background:#f4faf6}
+  .rq{font-size:17px;font-weight:750;color:#24516f;background:#f2f7fb;border:1px solid #c7dce9;border-radius:12px;padding:16px 18px;margin-top:14px}
+  .quote{border:1.5px solid #c9e8ce;background:var(--green-light);border-radius:14px;padding:16px 18px;color:#20583d;margin:12px 0}
+  .scenario-line{display:grid;grid-template-columns:118px 1fr;gap:10px;margin:10px 0;align-items:start}
+  .scenario-line b{color:var(--navy)}
+  .logic-step{border-top:3px solid var(--blue);padding:15px 16px 12px;background:#fbfcfe;border-radius:8px;min-height:142px}
+  .logic-step .num{font-size:12px;letter-spacing:.6px;font-weight:900;color:var(--blue);margin-bottom:6px}
+  .lit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+  .lit-card{border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;background:#fff}
+  .lit-card .stream{font-size:12px;font-weight:900;letter-spacing:.5px;color:var(--blue);margin-bottom:5px}
+  .lit-card .known{margin-top:7px}
+  .lit-card .gap{margin-top:10px;background:var(--amber-light);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:9px 11px;color:#6f4d1b}
+  .lit-card .cite{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .model-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px;margin:14px 0;overflow:hidden}
+  .model-card svg{width:100%;height:auto;display:block}
+  .caption{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  tr:nth-child(even) td{background:#f8fbfe}
+  td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+  .hyp-table td:nth-child(2){font-weight:700;color:#263f54}
+  .lit-table td:nth-child(1){font-weight:800;color:var(--navy);width:18%}
+  .lit-table td:nth-child(2){width:34%}
+  .lit-table td:nth-child(3){width:36%}
+  .lit-table td:nth-child(4){width:12%;font-size:12.5px;color:var(--muted)}
+  .lit-table .gapcell{color:#6f4d1b;background:#fffaf2}
+  .hyp-table.compact td{padding:10px 12px}
+  .study-head{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}.study-head .panel{padding:14px 16px}.study-head .panel p{margin:4px 0;line-height:1.52}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
+  .metric{border:1px solid var(--border);border-radius:10px;padding:12px;background:#fbfcfe}
+  .metric strong{display:block;color:var(--navy);margin-bottom:4px}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+  .flow .step{border:1.3px solid #c9d7e1;border-radius:10px;padding:12px;background:#fff;position:relative}
+  .flow .step .n{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;background:var(--green);color:#fff;font-size:12px;font-weight:800;margin-bottom:7px}
+  .evidence{border-top:1px solid var(--border);margin-top:12px;padding-top:10px}
+  .impl-title{font-size:15px;font-weight:850;color:var(--navy);margin:10px 0 7px}
+  .mini-steps{display:grid;grid-template-columns:1fr;gap:7px;margin:8px 0}
+  .mini-step{display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:start;border:1px solid var(--border);border-radius:9px;padding:8px 9px;background:#fff}
+  .mini-step .n{display:flex;width:23px;height:23px;border-radius:50%;align-items:center;justify-content:center;background:var(--green);color:#fff;font-size:11px;font-weight:850;margin-top:1px}
+  .mini-step strong{color:var(--navy);display:block;margin-bottom:2px}
+  .mini-step p{margin:0;font-size:12.8px;line-height:1.38}
+  .keep-box{font-size:12.6px;background:#f8fafc;border-left:4px solid var(--amber);padding:9px 11px;border-radius:0 8px 8px 0;margin:9px 0;color:#5b6470}
+  .contrib{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+  .contrib .panel{min-height:170px}
+  .refs{max-width:1180px;margin:0 auto 34px;background:#fff;border-radius:14px;padding:16px 20px;color:var(--gray);box-shadow:0 4px 18px rgba(23,54,93,.08)}
+  .refs summary{cursor:pointer;color:var(--navy);font-weight:800}
+  .refs p{font-size:13px;margin:8px 0}
+  .footer{position:absolute;left:48px;right:48px;bottom:18px;display:flex;justify-content:space-between;color:#9aa5b1;font-size:11px}
+  .muted{color:var(--muted)}
+
+  /* Reference-style Background and Research Question slide */
+  .reference-bg{padding:34px 30px 42px 30px}
+  .reference-bg .ref-bg-title{
+    position:relative;border:0!important;padding:0 0 0 24px!important;margin:0 0 30px!important;
+    color:#0d6599;font-family:Georgia,"Times New Roman","Songti SC","SimSun",serif;
+    font-size:31px;line-height:1.22;font-weight:700;letter-spacing:.1px;
+  }
+  .reference-bg .ref-bg-title:before{
+    content:"";position:absolute;left:0;top:-2px;width:7px;height:48px;background:#0c6fa5;
+  }
+  .reference-bg .ref-bg-body{
+    font-family:Georgia,"Times New Roman","Songti SC","SimSun",serif;
+    font-size:18.2px;line-height:1.62;color:#142033;max-width:1090px;
+  }
+  .reference-bg .ref-bg-body p{color:#142033;margin:0 0 24px 0;text-align:justify}
+  .reference-bg .ref-bg-body p:last-child{margin-bottom:0}
+  .reference-bg .ref-bg-body strong{color:#142033;font-weight:800}
+  .reference-bg .real-example{margin:2px 0 20px;padding:13px 16px;border:1px solid #c7dce9;border-left:5px solid #0c6fa5;border-radius:8px;background:#f5f9fc;font-size:16.3px;line-height:1.48;color:#23384a}
+  .reference-bg .real-example strong{color:#0d6599}
+  .reference-bg .real-example .example-source{display:block;margin-top:5px;font-size:12.5px;color:#718096}
+  .reference-bg .research-question{margin-top:2px!important;padding:13px 16px;border-radius:8px;background:#eef6fb;border:1px solid #c7dce9;text-align:left!important;font-family:inherit;font-size:inherit;line-height:inherit}
+  .reference-bg .research-question strong{font-family:inherit;font-size:inherit;line-height:inherit}
+  .reference-bg .boundary-question{display:block;margin-top:5px;font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;font-weight:400}
+  .study-kicker{font-size:12.5px;font-weight:900;letter-spacing:.65px;color:var(--blue);margin-bottom:5px;text-transform:uppercase}
+  .core-test{background:#f4f8fb;border-left:4px solid var(--blue);padding:10px 12px;margin-top:9px;color:#425466;border-radius:0 8px 8px 0}
+  .core-test.green{border-left-color:var(--green);background:#f4faf6}
+  .core-test.amber{border-left-color:var(--amber);background:#fffaf2}
+
+
+  /* Clear construct operationalization and measurement */
+  .measure-section-title{font-size:14px;font-weight:900;color:var(--navy);margin:11px 0 5px;display:flex;align-items:center;gap:8px}
+  .measure-section-title:before{content:"";display:inline-block;width:5px;height:20px;background:var(--blue);border-radius:2px}
+  .measure-table{font-size:11.5px;line-height:1.23;margin:6px 0 9px}
+  .measure-table th,.measure-table td{padding:6px 7px}
+  .measure-table .instrument{font-weight:800;color:#263f54}
+  .measure-table .timing{color:#526271}
+  .measure-timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:9px}
+  .measure-timeline .mt-step{border:1px solid var(--border);border-radius:8px;padding:7px 7px;background:#fbfcfe;text-align:center;font-size:11.5px;line-height:1.25;color:#526271}
+  .measure-timeline .mt-step strong{display:block;color:var(--navy);margin-bottom:2px;font-size:11.8px}
+
+  @media(max-width:780px){
+    .slide{margin:18px 12px;padding:28px 22px;min-height:auto}.grid2,.grid3,.grid4,.lit-grid,.study-head,.metrics,.flow,.contrib,.measure-timeline{grid-template-columns:1fr}
+    table{font-size:12.5px}th,td{padding:8px}.footer{position:static;margin-top:18px}.model-card{overflow-x:auto}.model-card svg{min-width:940px}
+  }
+  @media print{
+    @page{size:A4 landscape;margin:8mm}
+    body{background:#fff;font-size:12.5px;line-height:1.46}
+    .deck{padding:0}.slide{box-shadow:none;margin:0;border:1px solid #ddd;border-radius:0;padding:26px 32px;min-height:0}
+    h1{font-size:22px;margin-bottom:14px;padding-bottom:7px}h2{font-size:16px;margin:13px 0 7px}.reference-bg{padding:22px 24px}.reference-bg .ref-bg-title{font-size:24px!important;margin-bottom:18px!important;padding-left:18px!important}.reference-bg .ref-bg-title:before{width:5px;height:37px}.reference-bg .ref-bg-body{font-size:13px!important;line-height:1.46!important}.reference-bg .ref-bg-body p{margin-bottom:12px!important}
+    .panel,.lit-card{padding:12px;border-radius:9px}.model-card{padding:9px;border-radius:9px;margin:8px 0}.model-card svg{min-width:0}
+    table{font-size:10.5px;line-height:1.24;margin:8px 0}th,td{padding:4px 6px}.construct-table{font-size:9.15px!important;line-height:1.12!important;margin:5px 0!important}.construct-table th,.construct-table td{padding:3px 4px!important}.measure-table{font-size:8.8px!important;line-height:1.08!important;margin:3px 0 5px!important}.measure-table th,.measure-table td{padding:2.5px 3.5px!important}.measure-section-title{font-size:10.5px!important;margin:5px 0 2px!important}.measure-section-title:before{height:14px!important;width:3px!important}.measure-timeline{gap:3px!important;margin-top:4px!important}.measure-timeline .mt-step{font-size:8.3px!important;padding:3px!important}.measure-timeline .mt-step strong{font-size:8.5px!important}.footer{display:none}.refs{display:none}
+  }
+
+
+  /* Context sensitive meeting support. Hidden until the user clicks a relevant academic element. */
+  .detail-trigger{cursor:pointer}
+  .detail-trigger td{transition:background-color .12s ease, box-shadow .12s ease}
+  .detail-trigger:hover td{background:#f2f7fb!important}
+  .detail-trigger:focus{outline:none}
+  .detail-trigger:focus td{box-shadow:inset 0 0 0 1px #9fc3dd}
+  .model-hitbox{fill:transparent;cursor:pointer;pointer-events:all}
+  .model-hitbox:hover{fill:rgba(47,111,163,.035)}
+  #detail-overlay{
+    display:none;position:fixed;right:26px;bottom:26px;z-index:9998;width:min(590px,calc(100vw - 52px));
+    max-height:56vh;overflow:auto;background:rgba(255,255,255,.988);border:1px solid #cfd9e4;
+    border-radius:14px;box-shadow:0 16px 44px rgba(23,54,93,.22);padding:15px 17px 13px;
+  }
+  #detail-overlay.open{display:block}
+  #detail-overlay .detail-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:8px}
+  #detail-overlay .detail-kicker{font-size:11px;font-weight:850;letter-spacing:.7px;color:#2f6fa3;text-transform:uppercase;margin-bottom:2px}
+  #detail-overlay .detail-title{font-size:17px;line-height:1.28;color:#17365d;font-weight:850}
+  #detail-overlay .detail-close{border:0;background:transparent;color:#718096;font-size:20px;line-height:1;cursor:pointer;padding:2px 5px}
+  #detail-overlay .detail-text p{font-size:16.8px;line-height:1.52;color:#1f3344;margin:0;font-weight:560}
+  #detail-overlay .detail-text .quick-label{display:block;font-size:11px;letter-spacing:.45px;color:#2f6fa3;font-weight:850;margin-bottom:4px;text-transform:uppercase}
+  #detail-overlay .detail-memory{border-top:1px solid #d7dee8;margin-top:12px;padding-top:10px;font-size:13.5px;line-height:1.48;color:#647586}
+  #detail-overlay .detail-memory strong{color:#496276}
+  @media (max-width:800px){#detail-overlay{right:12px;bottom:12px;width:calc(100vw - 24px);max-height:62vh}#detail-overlay .detail-text p{font-size:16.5px}}
+
+  /* Hidden face to face speaker notes. Normal slides remain unchanged until the page number is clicked. */
+  .footer span:last-child{cursor:pointer;user-select:none}
+  #speaker-overlay{
+    display:none;position:fixed;z-index:9999;right:24px;bottom:24px;width:min(620px,calc(100vw - 48px));
+    max-height:58vh;overflow:auto;background:rgba(255,255,255,.985);border:2px solid #17365d;
+    border-radius:14px;box-shadow:0 14px 42px rgba(23,54,93,.28);padding:18px 20px 16px;
+    color:#1f2933;font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  #speaker-overlay.open{display:block}
+  #speaker-overlay .speaker-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px}
+  #speaker-overlay .speaker-kicker{font-size:12px;font-weight:800;letter-spacing:.7px;color:#2f6fa3;text-transform:uppercase}
+  #speaker-overlay .speaker-close{border:0;background:transparent;color:#718096;font-size:20px;line-height:1;cursor:pointer;padding:2px 5px}
+  #speaker-overlay .speaker-text{font-size:20px;line-height:1.55;color:#243746;font-weight:500}
+  #speaker-overlay .speaker-text p{font-size:20px;line-height:1.55;color:#243746;margin:0 0 10px}
+  #speaker-overlay .speaker-tip{border-top:1px solid #d7dee8;margin-top:11px;padding-top:8px;font-size:11px;color:#8b98a7}
+  @media (max-width:800px){#speaker-overlay{right:12px;bottom:12px;width:calc(100vw - 24px);max-height:66vh}#speaker-overlay .speaker-text,#speaker-overlay .speaker-text p{font-size:18px}}
+
+  .lang-deck,.lang-ref{display:none}
+  .lang-deck.active-lang{display:block}
+  .lang-ref.active-lang{display:block}
+  #lang-toggle{position:fixed;top:18px;right:20px;z-index:10020;border:1px solid #b9c9d8;background:rgba(255,255,255,.96);color:#17365d;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:850;cursor:pointer;box-shadow:0 6px 20px rgba(23,54,93,.16);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+  #lang-toggle:hover{background:#f2f7fb}
+  #lang-toggle .muted-toggle{color:#8a98a8;font-weight:700}
+  @media print{#lang-toggle{display:none}.lang-deck,.lang-ref{display:none!important}.lang-deck.active-lang,.lang-ref.active-lang{display:block!important}}
+
+  /* Fine grained click to speak support. Academic appearance remains unchanged until hover or click. */
+  .talk-trigger{cursor:pointer;transition:background-color .12s ease,box-shadow .12s ease,transform .12s ease}
+  .talk-trigger:hover{box-shadow:inset 0 0 0 1px #9fc3dd;background:#f7fbff!important}
+  .talk-trigger:focus{outline:none;box-shadow:inset 0 0 0 2px #79a9ca}
+  td.talk-trigger:hover{background:#eef6fb!important}
+  .step.talk-trigger:hover,.panel.talk-trigger:hover,.metric.talk-trigger:hover,.logic-step.talk-trigger:hover{transform:translateY(-1px)}
+
+  .design-ref{display:block;margin-top:6px;font-size:10.8px;line-height:1.25;color:#718096;font-style:italic}
+
+/* v10: richer construct definitions while preserving separate definition and measurement citations */
+.construct-definition-table td:nth-child(3), .construct-definition-table th:nth-child(3){width:45%;}
+.construct-definition-table td:nth-child(4), .construct-definition-table th:nth-child(4){width:17%;}
+.construct-definition-table td:nth-child(5), .construct-definition-table th:nth-child(5){width:16%;}
+.construct-definition-table td{vertical-align:top;}
+
+  .hyp-notation{font-size:11.7px;line-height:1.35;color:#5f6f7d;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:7px 10px;margin:-8px 0 9px}
+  .hyp-path{font-weight:850;color:var(--blue);white-space:nowrap;text-align:center;vertical-align:middle!important}
+  .hyp-table.with-path td:nth-child(2){font-weight:850;color:var(--blue);white-space:nowrap;text-align:center}
+  .hyp-table.with-path td:nth-child(3){font-weight:700;color:#263f54}
+
+  .ref-mini{margin-top:10px;padding:9px 12px;background:#f7f9fb;border:1px solid #d9e1e8;border-radius:8px;font-size:11.4px;line-height:1.38;color:#4f5f6d;}
+  .ref-mini strong{color:#315d7d;font-weight:800;}
+  .ref-mini em{font-style:normal;color:#718096;}
+</style>
+<style>
+/* v60 English PDF optimization overrides */
+html { min-width:1280px; background:var(--bg); }
+body { width:1280px; min-width:1280px; margin:0 auto; background:var(--bg); font-size:15px; }
+.deck { padding:1px 0; }
+.slide { width:1180px; max-width:none; margin:34px auto; padding:42px 48px; }
+.slide.cover-only {
+  min-height:650px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:54px;
+  padding-bottom:54px;
+}
+.idea-kicker {
+  font-size:15px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:1.6px;
+  color:var(--blue);
+  margin-bottom:18px;
+}
+.cover-title {
+  max-width:1010px;
+  font-size:44px;
+  line-height:1.18;
+  text-align:center;
+  margin:0 auto;
+  border:0;
+  padding:0;
+}
+.cover-sub-strong {
+  max-width:930px;
+  font-size:23px;
+  line-height:1.34;
+  color:#526a80;
+  font-weight:650;
+  text-align:center;
+  margin:20px auto 0;
+}
+/* Give tables enough room to remain presentation-readable. */
+table { font-size:14.2px; line-height:1.38; }
+th { padding:11px 12px; }
+td { padding:10px 12px; }
+
+/* Construct table: rebalance columns and stop the print stylesheet from shrinking text. */
+.construct-definition-table {
+  font-size:13.15px !important;
+  line-height:1.34 !important;
+  margin-top:14px !important;
+  table-layout:fixed;
+}
+.construct-definition-table th,
+.construct-definition-table td { padding:8px 9px !important; }
+.construct-definition-table th:nth-child(1), .construct-definition-table td:nth-child(1) { width:6% !important; }
+.construct-definition-table th:nth-child(2), .construct-definition-table td:nth-child(2) { width:18% !important; }
+.construct-definition-table th:nth-child(3), .construct-definition-table td:nth-child(3) { width:38% !important; }
+.construct-definition-table th:nth-child(4), .construct-definition-table td:nth-child(4) { width:15% !important; }
+.construct-definition-table th:nth-child(5), .construct-definition-table td:nth-child(5) { width:23% !important; }
+.construct-definition-table td:first-child { white-space:normal; }
+
+/* Hypotheses table */
+.hyp-table.with-path {
+  font-size:13.35px !important;
+  line-height:1.36 !important;
+  table-layout:fixed;
+}
+.hyp-table.with-path th,
+.hyp-table.with-path td { padding:10px 11px !important; }
+.hyp-notation { font-size:12.6px; line-height:1.4; padding:8px 11px; }
+
+/* Overall study overview table */
+section[data-slide-index="7"] table {
+  font-size:13.45px !important;
+  line-height:1.39 !important;
+  table-layout:fixed;
+}
+section[data-slide-index="7"] table th,
+section[data-slide-index="7"] table td { padding:10px 11px !important; }
+section[data-slide-index="7"] table th:nth-child(1), section[data-slide-index="7"] table td:nth-child(1) { width:10% !important; }
+section[data-slide-index="7"] table th:nth-child(2), section[data-slide-index="7"] table td:nth-child(2) { width:31% !important; }
+section[data-slide-index="7"] table th:nth-child(3), section[data-slide-index="7"] table td:nth-child(3) { width:43% !important; }
+section[data-slide-index="7"] table th:nth-child(4), section[data-slide-index="7"] table td:nth-child(4) { width:16% !important; }
+
+/* Slightly improve dense literature page without shrinking type. */
+section[data-slide-index="3"] .lit-card { padding:17px 18px; }
+section[data-slide-index="3"] .lit-card p { line-height:1.5; }
+
+/* Never expose interactive UI in the PDF source. */
+#lang-toggle, #detail-overlay, #speaker-overlay, .refs { display:none !important; }
+</style>
+<style id="translation-safe-screen-layout">
+/* Translation-safe browser layout.
+   Browser translation / bilingual translation can substantially increase text height.
+   On screen, slides are therefore content-driven; print/PDF rules remain unchanged. */
+@media screen {
+  html, body { height:auto !important; overflow-y:auto !important; }
+  .slide:not(.cover-only) {
+    height:auto !important;
+    min-height:650px !important;
+    overflow:visible !important;
+    display:flex !important;
+    flex-direction:column !important;
+    padding-bottom:24px !important;
+  }
+  .slide:not(.cover-only) > .footer {
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:100% !important;
+    margin-top:auto !important;
+    padding-top:18px !important;
+    flex:0 0 auto !important;
+  }
+  .slide:not(.cover-only) table,
+  .slide:not(.cover-only) thead,
+  .slide:not(.cover-only) tbody,
+  .slide:not(.cover-only) tr,
+  .slide:not(.cover-only) td,
+  .slide:not(.cover-only) th,
+  .slide:not(.cover-only) p,
+  .slide:not(.cover-only) li,
+  .slide:not(.cover-only) .panel,
+  .slide:not(.cover-only) .lit-card,
+  .slide:not(.cover-only) .step,
+  .slide:not(.cover-only) .insight,
+  .slide:not(.cover-only) .rq,
+  .slide:not(.cover-only) .real-example,
+  .slide:not(.cover-only) .research-question {
+    max-height:none !important;
+    overflow:visible !important;
+  }
+  .slide:not(.cover-only) td,
+  .slide:not(.cover-only) th,
+  .slide:not(.cover-only) p,
+  .slide:not(.cover-only) li,
+  .slide:not(.cover-only) h1,
+  .slide:not(.cover-only) h2,
+  .slide:not(.cover-only) h3 {
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  /* Keep the cover visually fixed because translation does not create dense tabular content there. */
+  .slide.cover-only { overflow:visible !important; }
+}
+</style>
+</head><body><div class="deck" data-lang="en" id="deck-en">
+<section class="slide cover-only" data-slide-index="1">
+<div class="idea-kicker">IDEA1 -</div><h1 class="cover-title">Who Is Responsible for What We Create with AI?</h1><div class="cover-sub cover-sub-strong">How Input Representation Shapes Shared Agency and Accountability</div>
+<div class="footer"><span>1 / 12</span></div>
+</section>
+<section class="slide reference-bg" data-slide-index="2">
+<h1 class="ref-bg-title">Background and Research Question</h1>
+<div class="ref-bg-body">
+<p>Generative AI has lowered barriers to expressing intent in human–AI interaction by allowing users to describe desired outcomes directly in natural language. As generative tasks become more complex, input practices increasingly range from free-form natural-language descriptions to structured formats that are easier for AI systems to parse and execute. In AI video generation, for example, the same creative intention can be expressed either as a continuous paragraph or as a shot-by-shot storyboard.</p>
+<p>The two formats differ in more than surface presentation. Natural-language input leaves more interpretation of user intent, task decomposition, and generative planning to the AI. Machine-oriented structured input requires users to perform part of that decomposition and planning in advance, so users contribute not only what they want but also part of the structure used to translate that intention into generation steps.</p>
+<p>When users contribute more to generative planning while the AI remains responsible for interpretation, generation, and integration, the contribution structure underlying the same final output also changes. This raises a broader question: can subtle differences in how users participate in human–AI creation shape how responsibility is understood when the resulting work later receives a negative outcome?</p>
+<div class="real-example"><strong>Practical Scenario: Google Gemini</strong><br/>In Google Gemini, a consumer can describe a short promotional video in a natural-language prompt. The same creative information can also be organized into shot-by-shot instructions. In both cases, Gemini interprets the request and generates the content. Structured input, however, requires the consumer to complete more of the task decomposition before generation begins. Even when the final AI output is the same, the consumer participates differently in the process that produces it.<span class="example-source">Google Gemini, 2026</span></div>
+<p class="research-question"><strong>Research question:</strong> When users and generative AI jointly create an output, how does the way users participate in its creation shape who is held responsible when that output later receives a negative outcome?</p>
+</div>
+<div class="footer"><span>Background and Research Question</span><span>2 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="3">
+<h1>Literature Foundations and Core Theoretical Gaps</h1>
+<div class="lit-grid">
+<div class="lit-card"><div class="stream">1: INPUT REPRESENTATION</div><h3>Input Representation in Human–AI Creative Work</h3><p class="known">Recent generative AI research shows that representation can shape human–AI creative work. Different formats can change how creative tasks are organized and how much effort users expend. Gordetzki et al. (2026) further show that textual and visual representations produce different human–AI agency configurations.</p><div class="gap"><strong>Unresolved: </strong>Existing research focuses mainly on representations generated by AI or presented to users. Less is known about representations at the <strong>user-input stage</strong>. It remains unclear whether expressing the same creative intention in natural language rather than in a machine-oriented structured form changes consumers’ perceived shared agency with the AI.</div><p class="cite">Cillo &amp; Rubera (2025), Gordetzki et al. (2026)</p></div>
+<div class="lit-card"><div class="stream">2: PERCEIVED SHARED AGENCY</div><h3>Perceived Shared Agency</h3><p class="known">Perceived shared agency captures the experience that an action and its outcome are jointly produced with another actor. Recent research has extended this construct to customer–AI interactions and finds that stronger shared agency is associated with greater willingness to use and purchase AI-powered services.</p><div class="gap"><strong>Unresolved: </strong>Existing research establishes shared agency as an important experience in human–AI interaction, but its consequences after a negative outcome are less understood. Whether perceived shared agency formed before the negative outcome shapes how much responsibility consumers subsequently assign to the AI has not been directly established.</div><p class="cite">Bolt et al. (2016), Loehr (2018), Voyer et al. (2025)</p></div>
+<div class="lit-card"><div class="stream">3: AI FAILURE AND RESPONSIBILITY</div><h3>Responsibility Attribution After AI Failure</h3><p class="known">Research on AI failure shows that responsibility judgments depend on both failure characteristics and the broader interaction context. Zhang et al. (2026) examine failure locus, controllability, and intentionality, while Castillo et al. (2026) show that interaction conditions, user expectations, failure type, and failure severity can influence responsibility attribution.</p><div class="gap"><strong>Unresolved: </strong>These studies identify several antecedents of responsibility, including factors that arise before failure. They do not, however, directly test <strong>perceived shared agency</strong> as a psychological antecedent of responsibility attribution. Whether shared agency formed during human–AI interaction shapes subsequent responsibility attributed to the AI after failure therefore remains unclear.</div><p class="cite">Zhang, Wu, &amp; Liu (2026), Castillo, Canhoto, &amp; Said (2026)</p></div>
+<div class="lit-card"><div class="stream">4: HUMAN–AI COLLABORATION AND RESPONSIBILITY</div><h3>Human–AI Collaboration and Responsibility</h3><p class="known">Related research already shows that the collaborative context can change responsibility allocation. Cooperative versus competitive task structures alter how responsibility is allocated between humans and robots, responsibility can be shared between human and AI actors in joint decision-making, and AI customization can increase users’ sense of personal responsibility for negative outcomes.</p><div class="gap"><strong>Unresolved: </strong>These studies examine relatively visible differences in task structure, shared decision-making context, or AI customization. Input representation is a subtler distinction: the formal roles of the user and the AI need not change, while the same creative intention is simply organized differently before submission. Whether this difference changes later responsibility judgments, and whether perceived shared agency explains the effect, remains unclear.</div><p class="cite">Lei &amp; Rau (2023), Brailsford et al. (2025), Yu et al. (2026)</p></div>
+</div>
+<div class="insight"><strong>Core theoretical gaps: </strong>Gap 1. <strong>From input representation to shared agency.</strong> Research has not established whether different user-side representations of the same creative intention produce different levels of perceived shared agency with the AI.<br/>Gap 2. <strong>From shared agency to responsibility.</strong> Although prior research connects human–AI collaboration with responsibility attribution, it has not established whether perceived shared agency itself subsequently shapes how much responsibility consumers assign to the AI after a negative outcome.<br/><strong>Together,</strong> these gaps leave unclear whether a more subtle difference in how users represent the same creative intention can alter post-failure responsibility attributed to the AI, and whether perceived shared agency provides the psychological link.</div>
+<div class="footer"><span>Literature Foundations and Core Theoretical Gaps</span><span>3 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="4">
+<h1>Theoretical Model</h1>
+<div class="model-card">
+<svg aria-label="Model 2 conceptual model" role="img" viewbox="0 0 1120 430">
+<defs><marker id="arrowPrecEn" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#17365d"></path></marker></defs>
+<!-- Compact benchmark architecture, redrawn from the published theoretical sequence rather than reproducing the journal figure -->
+<rect fill="#f7fbff" height="104" rx="8" stroke="#17365d" stroke-width="2.2" width="220" x="30" y="170"></rect>
+<rect fill="#f8fff9" height="104" rx="8" stroke="#276749" stroke-width="2.2" width="210" x="325" y="170"></rect>
+<rect fill="#fffaf2" height="104" rx="8" stroke="#a66d1e" stroke-width="2.2" width="220" x="610" y="170"></rect>
+<rect fill="#fff6f7" height="104" rx="8" stroke="#9a4f57" stroke-width="2.2" width="200" x="890" y="170"></rect>
+<text fill="#17365d" font-size="15.5" font-weight="800" text-anchor="middle" x="140" y="198">Input Representation</text><text fill="#5d7182" font-size="11.8" text-anchor="middle" x="140" y="222">Machine-Oriented Structured Input</text><text fill="#5d7182" font-size="11.8" text-anchor="middle" x="140" y="240">vs. Natural-Language Input</text>
+<text fill="#276749" font-size="16" font-weight="800" text-anchor="middle" x="430" y="202">Perceived Shared</text><text fill="#276749" font-size="16" font-weight="800" text-anchor="middle" x="430" y="226">Agency</text>
+<text fill="#8b5f20" font-size="15.5" font-weight="800" text-anchor="middle" x="720" y="205">Perceived AI</text><text fill="#8b5f20" font-size="15.5" font-weight="800" text-anchor="middle" x="720" y="225">Responsibility</text>
+<text fill="#8a4149" font-size="16" font-weight="800" text-anchor="middle" x="990" y="202">Decisional</text><text fill="#8a4149" font-size="16" font-weight="800" text-anchor="middle" x="990" y="226">Forgiveness</text>
+<line marker-end="url(#arrowPrecEn)" stroke="#17365d" stroke-width="2.4" x1="250" x2="325" y1="222" y2="222"></line><line marker-end="url(#arrowPrecEn)" stroke="#17365d" stroke-width="2.4" x1="535" x2="610" y1="222" y2="222"></line><line marker-end="url(#arrowPrecEn)" stroke="#17365d" stroke-width="2.4" x1="830" x2="890" y1="222" y2="222"></line>
+<text fill="#17365d" font-size="12" font-weight="800" text-anchor="middle" x="287" y="205">H1  +</text><text fill="#17365d" font-size="12" font-weight="800" text-anchor="middle" x="572" y="205">H2  −</text><text fill="#17365d" font-size="12" font-weight="800" text-anchor="middle" x="860" y="205">H2  −</text>
+<rect fill="#eef8f0" height="70" rx="8" stroke="#276749" stroke-width="1.9" width="275" x="150" y="35"></rect><text fill="#276749" font-size="14.5" font-weight="800" text-anchor="middle" x="287" y="63">W1: Coordination Cue</text><text fill="#667b74" font-size="12" text-anchor="middle" x="287" y="86"></text><line stroke="#276749" stroke-dasharray="6 5" stroke-width="2" x1="287" x2="287" y1="105" y2="222"></line><text fill="#276749" font-size="12.5" font-weight="800" text-anchor="start" x="297" y="158">H3  +</text>
+<rect fill="#fff8ec" height="70" rx="8" stroke="#a66d1e" stroke-width="1.9" width="250" x="445" y="330"></rect><text fill="#805719" font-size="14.5" font-weight="800" text-anchor="middle" x="570" y="353">W2: Attributional</text><text fill="#805719" font-size="14.5" font-weight="800" text-anchor="middle" x="570" y="377">Complexity</text><line stroke="#a66d1e" stroke-dasharray="6 5" stroke-width="2" x1="570" x2="570" y1="330" y2="222"></line><text fill="#a66d1e" font-size="12.5" font-weight="800" text-anchor="start" x="580" y="294">H4  −</text>
+</svg>
+</div>
+<div class="quote"><strong>Theoretical sequence:</strong> Input representation redistributes contributions between consumers and AI within the generative process. Machine-oriented structured input requires consumers to perform part of the task decomposition and generative planning, while the final output still depends on the AI’s interpretation, generation, and integration. This creates a more interdependent configuration of contributions, increasing perceived shared agency. Perceived shared agency then provides a multi-actor representation of how the outcome was produced, making responsibility for a negative outcome less concentrated on the AI and thereby increasing decisional forgiveness.</div><div class="benchmark-reference" style="margin:14px 0 0;border:1.5px solid #cbd5e0;border-radius:14px;background:#fbfcfe;padding:14px 16px 12px;">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:6px;">
+<div><div style="font-size:15px;font-weight:800;color:#17365d;">Top-Journal Structural Benchmark</div><div style="font-size:11.7px;color:#718096;margin-top:2px;">Kang, Kim, &amp; Lakshmanan (2025), Journal of Marketing, 89(1), 56–76</div></div>
+</div><svg aria-label="Top journal structural benchmark from Kang Kim and Lakshmanan 2025 Journal of Marketing" role="img" viewbox="0 0 1120 235">
+<defs><marker id="arrowBenchEn" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#17365d"></path></marker><marker id="arrowBenchModEn" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#b67a16"></path></marker></defs>
+<rect fill="#f7fbff" height="82" rx="10" stroke="#17365d" stroke-width="2" width="210" x="18" y="58"></rect>
+<rect fill="#f8fff9" height="82" rx="10" stroke="#276749" stroke-width="2" width="210" x="310" y="58"></rect>
+<rect fill="#fffaf2" height="82" rx="10" stroke="#a66d1e" stroke-width="2" width="235" x="602" y="58"></rect>
+<rect fill="#fff6f7" height="82" rx="10" stroke="#9a4f57" stroke-width="2" width="190" x="910" y="58"></rect>
+<line marker-end="url(#arrowBenchEn)" stroke="#17365d" stroke-width="2.2" x1="228" x2="310" y1="99" y2="99"></line>
+<line marker-end="url(#arrowBenchEn)" stroke="#17365d" stroke-width="2.2" x1="520" x2="602" y1="99" y2="99"></line>
+<line marker-end="url(#arrowBenchEn)" stroke="#17365d" stroke-width="2.2" x1="837" x2="910" y1="99" y2="99"></line>
+<rect fill="#fff8ec" height="42" rx="8" stroke="#c88a22" stroke-width="1.6" width="245" x="146.5" y="4"></rect>
+<rect fill="#fff8ec" height="42" rx="8" stroke="#c88a22" stroke-width="1.6" width="245" x="438.5" y="162"></rect>
+<line marker-end="url(#arrowBenchModEn)" stroke="#b67a16" stroke-dasharray="6 5" stroke-width="1.8" x1="269" x2="269" y1="46" y2="92"></line>
+<line marker-end="url(#arrowBenchModEn)" stroke="#b67a16" stroke-dasharray="6 5" stroke-width="1.8" x1="561" x2="561" y1="162" y2="106"></line>
+<text fill="#17365d" font-size="14.5" font-weight="800" text-anchor="middle" x="123" y="87">Anatomical Depiction</text>
+<text fill="#5d7182" font-size="10.8" text-anchor="middle" x="123" y="112"></text>
+<text fill="#276749" font-size="14.5" font-weight="800" text-anchor="middle" x="415" y="102">Simulated Assemblage</text>
+<text fill="#8b5f20" font-size="13.2" font-weight="800" text-anchor="middle" x="719" y="86">Confidence in Product</text>
+<text fill="#8b5f20" font-size="13.2" font-weight="800" text-anchor="middle" x="719" y="111">Performance</text>
+<text fill="#8a4149" font-size="14.5" font-weight="800" text-anchor="middle" x="1005" y="102">Product Valuation</text>
+<text fill="#805719" font-size="13.2" font-weight="800" text-anchor="middle" x="269" y="23">Technology Anxiety</text>
+<text fill="#7a6b54" font-size="9.8" text-anchor="middle" x="269" y="39"></text>
+<text fill="#805719" font-size="13.2" font-weight="800" text-anchor="middle" x="561" y="181">Consumption Goal</text>
+<text fill="#7a6b54" font-size="9.8" text-anchor="middle" x="561" y="197"></text>
+</svg></div>
+<div class="footer"><span>Theoretical Model</span><span>4 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="5">
+<h1>Construct Definitions and Sources</h1>
+<table class="construct-definition-table" style="font-size:11.45px;line-height:1.28;margin-top:12px">
+<thead><tr><th style="width:7%">Role</th><th style="width:19%">Construct</th><th style="width:40%">Definition</th><th style="width:17%">Definition / Conceptual Source</th><th style="width:17%">Measurement / Manipulation Source</th></tr></thead>
+<tbody><tr><td><strong>IV</strong></td><td><strong>Input Representation</strong></td><td><div>Input representation refers to the form in which the same underlying information or intention is organized and expressed when provided to an AI system.</div><div style="margin-top:5px">The study compares natural-language input, which conveys a creative intention in free-form natural language, with machine-oriented structured input, which decomposes and organizes the same intention into units that more closely correspond to the generation process.</div></td><td>Cillo &amp; Rubera (2025); Gordetzki et al. (2026)</td><td>Study-specific manipulation: the conditions provide the same required creative information while differing in how that information is organized.</td></tr><tr><td><strong>M1</strong></td><td><strong>Perceived Shared Agency</strong></td><td><div>Perceived shared agency is the subjective experience that an action and its outcome are produced jointly with another actor.</div><div style="margin-top:5px">Applied to consumer–AI interaction, it captures the extent to which consumers experience themselves and the AI as joint contributors to the formation of an outcome.</div></td><td>Voyer et al. (2025)</td><td>The Perceived Shared Agency scale developed and validated by Voyer et al. (2025) for customer–AI interactions, with only the referent changes necessary for the generative-AI task used in the study.</td></tr><tr><td><strong>M2</strong></td><td><strong>Perceived AI Responsibility</strong></td><td><div>Perceived AI responsibility refers to the extent to which an AI system is judged to bear responsibility for an outcome.</div><div style="margin-top:5px">For an outcome jointly shaped by the consumer and the AI, it captures how much responsibility for a subsequent negative outcome the consumer assigns to the AI.</div></td><td>Brailsford et al. (2025); Castillo et al. (2026)</td><td>Primary measure: responsibility allocation adapted from Pham et al. (2010). Participants distribute a fixed total amount of responsibility across relevant contributors; the share assigned to the AI serves as the primary measure.</td></tr><tr><td>DV</td><td><strong>Decisional Forgiveness</strong></td><td><div>Decisional forgiveness concerns a person’s decision to reduce avoidance or retaliatory responses after a transgression and to adopt a less destructive behavioral stance toward the responsible party.</div><div style="margin-top:5px">Following a negative outcome in AI-assisted work, it reflects the consumer’s willingness to remain open to future interaction with the AI rather than withdraw from or terminate the relationship, even when negative feelings may persist.</div></td><td>Xie et al. (2025); Worthington et al. (2007)</td><td>Three-item decisional forgiveness measure used by Tsarenko &amp; Tojib (2012), adapted to the AI used in the study; items capture intentions to continue the relationship, remain friendly in future interactions, and avoid terminating the relationship.</td></tr><tr><td><strong>W1</strong></td><td><strong>Coordination Cue</strong></td><td><div>A coordination cue is a visible interface signal that makes the handoff of work between actors explicit.</div><div style="margin-top:5px">Within a consumer–AI workflow, such a cue makes the link between the consumer’s contribution and the AI’s subsequent work visible, clarifying how one contribution is carried forward into the next stage of the task.</div></td><td>Le et al. (2025)</td><td>Adapted from Le et al. (2025) task-transfer logic: the cue-present condition explicitly shows that the user’s input has been transferred to the AI generation stage; the cue-absent condition shows only generic processing information.</td></tr><tr><td><strong>W2</strong></td><td><strong>Attributional Complexity</strong></td><td><div>Attributional complexity is an individual tendency to prefer multifaceted rather than simple causal explanations when interpreting behavior and outcomes.</div><div style="margin-top:5px">When consumers interpret a negative outcome involving AI, greater attributional complexity makes them more inclined to consider multiple contributing causes, relationships among those causes, and situational influences rather than relying on a single-cause explanation.</div></td><td>Fletcher et al. (1986) (foundational construct and scale)</td><td>Original 28-item Attributional Complexity Scale (ACS) developed by Fletcher et al. (1986), assessing the tendency to consider multiple and interacting causes when explaining behavior and outcomes.</td></tr></tbody></table>
+<div class="footer"><span>Construct Definitions and Theoretical Sources</span><span>5 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="6">
+<h1>Hypotheses and Theoretical Rationale</h1>
+<div class="hyp-notation">Notation: X = Input Representation, M1 = Perceived Shared Agency, M2 = Perceived AI Responsibility, DV = Decisional Forgiveness, W1 = Coordination Cue, W2 = Attributional Complexity.</div><table class="hyp-table compact with-path" style="font-size:11.45px;line-height:1.30"><thead><tr><th style="width:7%">Hypothesis</th><th style="width:14%">Path</th><th style="width:31%">Formal Prediction</th><th>Theoretical Rationale</th></tr></thead><tbody>
+<tr><td>H1</td><td class="hyp-path">X → M1</td><td>Machine-oriented structured input increases perceived shared agency relative to natural-language input.</td><td>Natural-language input primarily specifies the desired outcome, leaving more task decomposition and organization to the AI. Machine-oriented structured input shifts part of this task structuring to the consumer while the AI continues to interpret, generate, and integrate the content. This more interdependent contribution structure makes the output more likely to be experienced as jointly produced.</td></tr>
+<tr><td>H2</td><td class="hyp-path">X → M1 → M2 → DV</td><td>Machine-oriented structured input increases decisional forgiveness through greater perceived shared agency and lower perceived AI responsibility.</td><td>Perceived shared agency establishes a pre-outcome representation that the result was jointly produced. When the jointly produced work is later rejected, this representation preserves the consumer’s own contribution in the causal explanation, making responsibility less likely to concentrate on the AI. Lower perceived AI responsibility then weakens the basis for avoidance or punitive responses, increasing decisional forgiveness.</td></tr>
+<tr><td>H3</td><td class="hyp-path">X × W1 → M1</td><td>Coordination cues strengthen the positive effect of machine-oriented structured input on perceived shared agency.</td><td>Structured input gives consumers a greater role in task organization, but without a coordination cue, the connection between that contribution and the AI’s subsequent generation remains implicit. A coordination cue makes this handoff explicit by showing that the user’s organized input has been transferred to the AI generation stage. Making this interdependence explicit strengthens the effect of structured input on perceived shared agency.</td></tr>
+<tr><td>H4</td><td class="hyp-path">M1 × W2 → M2</td><td>Attributional complexity strengthens the negative relationship between perceived shared agency and perceived AI responsibility.</td><td>Perceived shared agency provides multi-actor causal information about how the output was produced. Consumers higher in attributional complexity are more likely to integrate multiple and interacting causes when interpreting the rejected outcome, and therefore to use shared-agency information in allocating responsibility. The same increase in perceived shared agency should consequently produce a larger reduction in the responsibility assigned to the AI.</td></tr>
+</tbody></table>
+<div class="footer"><span>Hypotheses</span><span>6 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="7">
+<h1>Overall Experimental Design</h1>
+<table style="font-size:12.1px;line-height:1.34;margin-top:14px"><thead><tr><th style="width:10%">Study</th><th style="width:34%">Purpose</th><th style="width:40%">Design</th><th style="width:16%">Hypothesis</th></tr></thead><tbody>
+<tr><td>Study 1</td><td>Establish the effect of input representation (X) on perceived shared agency (M1).</td><td>AI video task. Natural-language and shot-by-shot structured formats convey the same creative information. Both groups receive the same AI draft, followed by M1 and additional diagnostic measures.</td><td>H1</td></tr>
+<tr><td>Study 2</td><td>Replicate H1 and formally test the X → M1 → M2 → DV serial mechanism.</td><td>AI presentation task. M1 is measured after the same initial AI draft and before review. Both groups submit the same final work and are told that it did not pass the supervisor's review and was therefore rejected. M2 and DV are then assessed.</td><td>H1, H2</td></tr>
+<tr><td>Study 3</td><td>Test Coordination Cue (W1) as a first-stage boundary condition.</td><td>A 2 × 2 between-subjects experiment: Input Representation (natural language vs. structured input) × Coordination Cue (absent vs. present). When the cue is present, the interface explicitly states, “Your input has been transferred to the AI generation stage.” When it is absent, the interface shows only, “Your request is being processed.” M1 is measured after all four conditions receive the same initial AI draft.</td><td>H3</td></tr>
+<tr><td>Study 4</td><td>Test Attributional Complexity (W2) as a second-stage boundary condition.</td><td>Measure W2 first, then randomize input representation and measure M1. After M1 is measured, all participants are informed that the work did not pass the supervisor's review and was therefore rejected; M2 is then measured. W2 is analyzed as a continuous variable.</td><td>H4</td></tr>
+</tbody></table>
+<div class="footer"><span>Overall Experimental Design</span><span>7 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="8">
+<h1>Study 1 · Establishing the Core Effect</h1>
+<div class="study-head"><div class="panel blue"><h3>Purpose</h3><p>Test H1 by examining whether different representations of the same creative information produce different levels of perceived shared agency.</p></div><div class="panel green"><h3>Design</h3><p>A two-condition between-subjects experiment. Participants use an AI system to create an approximately 10-second promotional video and receive the same creative brief and required information. The natural-language group writes a coherent prompt; the structured-input group organizes the same information shot by shot. Both groups then receive the same standardized AI-generated draft and complete the Perceived Shared Agency measure before any negative outcome is introduced.</p><div class="ref-mini"><strong>Theory and measurement:</strong> Gordetzki et al. (2026, <em>ISR</em>) provide theoretical grounding for representation and human–AI agency configurations; Voyer et al. (2025) provide the Perceived Shared Agency measure for customer–AI interactions.</div></div></div>
+<div class="flow" style="grid-template-columns:repeat(4,1fr);gap:9px"><div class="step"><div class="n">1</div><strong>Read the same creative brief</strong><p>All participants receive the same video task and required creative information.</p></div><div class="step"><div class="n">2</div><strong>Randomize input representation</strong><p>Express the same information in natural language or a shot-by-shot structure.</p></div><div class="step"><div class="n">3</div><strong>View the same AI draft</strong><p>Both groups receive the identical standardized AI-generated video draft.</p></div><div class="step"><div class="n">4</div><strong>Measure the core outcome</strong><p>Measure PSA first, followed by the required manipulation check and alternative-explanation measures.</p></div></div>
+<div class="footer"><span>Study 1 · Establishing the Core Effect</span><span>8 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="9">
+<h1>Study 2 · Testing the Serial Mechanism</h1>
+<div class="study-head"><div class="panel blue"><h3>Purpose</h3><p>Replicate H1 and formally test the proposed <strong>Input Representation → Perceived Shared Agency → AI Responsibility Share → Decisional Forgiveness</strong> mechanism.</p></div><div class="panel green"><h3>Design</h3><p>A two-condition between-subjects experiment. Participants create a five-slide promotional presentation using the same requirements, expressed as a natural-language brief or a slide-by-slide structured outline. After participants view the same initial AI draft, Perceived Shared Agency is measured before review. Both groups then receive the same final presentation, submit it for supervisor review, and are informed that it did not pass the review and was therefore rejected.</p><div class="ref-mini"><strong>Design benchmarks:</strong> Goenka &amp; Bagchi (2025, <em>JCR</em>, Study 2) and Bharti &amp; Sussman (2025, <em>JCR</em>, Experiment 6) provide serial-process design benchmarks; the responsibility-allocation approach follows Pham et al. (2010); the rejection scenario draws on Yue &amp; Li (2023, Frontiers in Psychology, Experiment 2), which uses a ChatGPT collaboration task.</div></div></div>
+<div class="flow" style="grid-template-columns:repeat(5,1fr);gap:9px"><div class="step"><div class="n">1</div><strong>Receive the presentation task</strong><p>All participants receive the same five-slide promotional brief.</p></div><div class="step"><div class="n">2</div><strong>Randomize input representation</strong><p>Use a natural-language brief or a slide-by-slide structured outline.</p></div><div class="step"><div class="n">3</div><strong>Measure PSA before review</strong><p>View the same initial AI draft and complete the Perceived Shared Agency measure.</p></div><div class="step"><div class="n">4</div><strong>Submit and receive the same rejection outcome</strong><p>Both groups receive the same final presentation, submit it for supervisor review, and are told that it did not pass the review and was therefore rejected.</p></div><div class="step"><div class="n">5</div><strong>Responsibility and forgiveness</strong><p>Measure the share of responsibility assigned to the AI (M2), followed by decisional forgiveness (DV).</p></div></div>
+<div class="footer"><span>Study 2 · Testing the Serial Mechanism</span><span>9 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="10">
+<h1>Study 3 · Testing the First-Stage Boundary Condition</h1>
+<div class="study-head"><div class="panel blue"><h3>Purpose</h3><p>Test H3 by asking whether structured input is more likely to produce perceived shared agency when the connection between the consumer's contribution and the AI's subsequent generation process is made explicit.</p></div><div class="panel green"><h3>Design</h3><p>A 2 × 2 between-subjects experiment: <strong>Input Representation</strong> (natural language vs. structured input) × <strong>Coordination Cue</strong> (absent vs. present). Participants complete the same promotional-video task. Apart from the two manipulations, the interface, task, and AI-generated draft are held constant.</p><div class="ref-mini"><strong>W1 source:</strong> Le et al. (2025, <em>JSR</em>, Study 1) manipulate explicit task-transfer communication. The present study adapts that visible handoff logic to consumer interactions with generative AI.</div></div></div>
+<div class="insight green" style="margin:10px 0 12px;font-size:13px;line-height:1.45"><strong>Cue present:</strong> “Your input has been transferred to the AI generation stage.”　<strong>Cue absent:</strong> “Your request is being processed.”</div>
+<div class="flow" style="grid-template-columns:repeat(4,1fr);gap:9px"><div class="step"><div class="n">1</div><strong>Same video task</strong><p>Participants read the same short promotional-video brief.</p></div><div class="step"><div class="n">2</div><strong>Randomize both factors</strong><p>Randomize input representation and whether the task-transfer cue is shown.</p></div><div class="step"><div class="n">3</div><strong>View the same AI draft</strong><p>All four conditions receive the identical initial AI-generated video draft.</p></div><div class="step"><div class="n">4</div><strong>PSA and manipulation check</strong><p>Measure Perceived Shared Agency first, followed by the coordination-cue manipulation check.</p></div></div>
+<div class="footer"><span>Study 3 · Testing the First-Stage Boundary Condition</span><span>10 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="11">
+<h1>Study 4 · Testing the Second-Stage Boundary Condition</h1>
+<div class="study-head"><div class="panel blue"><h3>Purpose</h3><p>Test H4 by examining whether Attributional Complexity determines how strongly consumers use pre-outcome shared-agency information when allocating responsibility after the jointly produced work is rejected in the supervisor's review.</p></div><div class="panel green"><h3>Design</h3><p>Participants first complete the <strong>Attributional Complexity Scale</strong> as part of a general thinking-style survey, with no content about the AI task, rejection, responsibility, or forgiveness. They are then randomly assigned to natural-language or structured-input conditions, complete the AI presentation task, and report PSA. After M1 is measured, all participants are informed that the work did not pass the supervisor's review and was therefore rejected; the share of responsibility assigned to the AI is then measured.</p><div class="ref-mini"><strong>W2 source:</strong> The Attributional Complexity Scale developed by Fletcher et al. (1986). W2 is analyzed as a continuous variable and is not dichotomized.</div></div></div>
+<div class="flow" style="grid-template-columns:repeat(4,1fr);gap:9px"><div class="step"><div class="n">1</div><strong>Measure W2</strong><p>Measure Attributional Complexity in a general thinking-style survey.</p></div><div class="step"><div class="n">2</div><strong>Randomize input representation</strong><p>Participants use natural-language or structured input in the AI presentation task.</p></div><div class="step"><div class="n">3</div><strong>Measure M1</strong><p>Measure Perceived Shared Agency after the task.</p></div><div class="step"><div class="n">4</div><strong>Rejection, then M2</strong><p>After M1 is measured, inform participants that the work did not pass the supervisor's review and was therefore rejected, then collect the responsibility-allocation measure.</p></div></div>
+<div class="footer"><span>Study 4 · Testing the Second-Stage Boundary Condition</span><span>11 / 12</span></div>
+</section>
+<section class="slide" data-slide-index="12">
+<h1>Expected Contributions</h1>
+<div class="contrib" style="margin-top:18px;gap:16px;font-size:14px;line-height:1.5"><div class="panel blue"><div class="section-label blue-label">Theoretical Contribution 1</div><h3>Linking Shared Agency During Production to Responsibility After Negative Joint Outcomes</h3><p>Prior research has examined shared agency and responsibility attribution in human–AI interaction largely as separate questions. This research connects them by showing how user-side input representation shapes perceived shared agency before a negative outcome is known, which then influences the responsibility assigned to the AI after jointly produced work is rejected. Coordination cues and attributional complexity further distinguish the formation of shared agency from its later use in responsibility judgments.</p></div><div class="panel green"><div class="section-label green-label">Theoretical Contribution 2</div><h3>Reframing Input Representation as a Process Design Feature of Human–AI Co-Creation</h3><p>Natural-language and machine-oriented structured input differ not only in format, but also in how task decomposition, information organization, and generative planning are distributed between users and AI. By holding creative information and AI output constant, this research shows that information organization itself can change how users understand their own role in jointly producing an outcome with AI.</p></div><div class="panel amber"><div class="section-label amber-label">Managerial Contribution 1</div><h3>Platform Design: Shape Co-Creation Through Input Structure and Handoff Cues</h3><p>When platforms want users to experience themselves as co-creators, they can use structured input templates and explicitly show that user input has been transferred to the AI generation stage. When the task is closer to one-way delegation, platforms can reduce requirements for structured decomposition and explicit handoff cues. Input design is therefore not only an efficiency tool, but also a lever for shaping shared-agency experiences.</p></div><div class="panel rose"><div class="section-label" style="color:var(--rose)">Managerial Contribution 2</div><h3>Platform Governance: Preserve Contribution Records for Accountability and Revision</h3><p>When jointly produced work is rejected, platforms need not rely solely on a generic rejection message. They can preserve the user's original input, structured requirements, and records showing how those inputs entered the AI generation process, then allow users to review and revise them before regeneration. This gives users a clearer basis for responsibility judgments and allows them to base decisions about revision and continued use on a traceable contribution history.</p></div></div>
+<div class="footer"><span>Expected Contributions</span><span>12 / 12</span></div>
+</section>
+</div></body></html>
