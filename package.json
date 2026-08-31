@@ -1,0 +1,12 @@
+{
+  "name": "marketing-research-ideas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Three HTML research presentations deployed on Railway",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
